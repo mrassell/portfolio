@@ -18,15 +18,86 @@
   <title>Contact</title>
 
   <link href="./main.3f6952e4.css" rel="stylesheet">
+
+  <!-- Load Montserrat Font -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+  </style>
+
+  <!-- Internal Styles -->
+  <style>
+    /* Navbar Styles */
+    .navbar {
+      border: none; /* Remove any default border */
+      background-color: transparent !important; /* Ensure background is transparent initially */
+    }
+
+    .navbar-nav > li > a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px; /* Make the font size larger */
+      font-weight: bold; /* Make the font bold */
+      color: #4A148C !important; /* Dark purple text color with !important */
+      padding: 12px 20px; /* Adjust padding for spacing */
+      display: block;
+      text-align: center; /* Center text in the navbar links */
+      border-radius: 4px; /* Rounded corners for buttons */
+      text-decoration: none; /* Remove underline from links */
+      margin: 0 5px; /* Spacing between buttons */
+      box-shadow: none; /* Remove any box shadow that might create unwanted lines */
+      border: none; /* Remove any border */
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+    }
+
+    .navbar-nav > li > a:hover {
+      background-color: #f8f9fa; /* Slightly gray background on hover */
+      color: #166cd5 !important; /* Slightly lighter purple on hover with !important */
+      border: none; /* Ensure no border on hover */
+    }
+
+    /* Contact Section */
+    .section-container {
+      padding: 60px 0;
+      background-color: #f8f9fa; /* Light gray background for contrast */
+    }
+
+    .section-container h1.h2 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      color: #4A148C; /* Dark purple text color */
+      margin-top: 50px; /* Adjust margin-top to position it lower */
+      margin-bottom: 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .contact-icon {
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .contact-icon:hover {
+      color: #0056b3;
+    }
+
+    .btn-default {
+      font-size: 18px;
+      padding: 10px 20px;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Add your content of header -->
+  <!-- Header -->
   <header>
-    <nav class="navbar  navbar-fixed-top navbar-default">
+    <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
-          aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -34,8 +105,9 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
-          <ul class="nav navbar-nav ">
+          <ul class="nav navbar-nav">
             <li><a href="./index.html" title="">Home</a></li>
+            <li><a href="./index.html#experience" title="">Experience</a></li>
             <li><a href="./projects.html" title="">Projects</a></li>
             <li><a href="./about.html" title="">About Me</a></li>
             <li><a href="./contact.html" title="">Contact</a></li>
@@ -50,7 +122,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="section-container-spacer text-center">
-            <h1 class="h2">Contact me</h1>
+            <h1 class="h2">Contact:</h1>
           </div>
 
           <div class="row">
@@ -76,30 +148,6 @@
     </div>
   </div>
 
-  <style>
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .contact-icon {
-      color: #333;
-      transition: color 0.3s ease;
-    }
-
-    .contact-icon:hover {
-      color: #0056b3;
-    }
-
-    .btn-default {
-      font-size: 18px;
-      padding: 10px 20px;
-    }
-  </style>
-
   <script>
     document.addEventListener("DOMContentLoaded", function (event) {
       navActivePage();
@@ -110,36 +158,3 @@
 </body>
 
 </html>
-
-<style>
-  /* Load Montserrat Font */
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
-
-  /* Navbar Styles */
-  /* Navbar Styles */
-.navbar {
-  border: none; /* Remove any default border */
-}
-
-.navbar-nav > li > a {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px; /* Make the font size larger */
-  font-weight: bold; /* Make the font bold */
-  color: #4A148C !important; /* Dark purple text color with !important */
-  padding: 12px 20px; /* Adjust padding for spacing */
-  display: block;
-  text-align: center; /* Center text in the navbar links */
-  border-radius: 4px; /* Rounded corners for buttons */
-  text-decoration: none; /* Remove underline from links */
-  margin: 0 5px; /* Spacing between buttons */
-  box-shadow: none; /* Remove any box shadow that might create unwanted lines */
-  border: none; /* Remove any border */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
-}
-
-.navbar-nav > li > a:hover {
-  background-color: #f8f9fa; /* Slightly gray background on hover */
-  color: #166cd5 !important; /* Slightly lighter purple on hover with !important */
-  border: none; /* Ensure no border on hover */
-}
-</style>

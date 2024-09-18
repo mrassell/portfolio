@@ -57,16 +57,190 @@
   box-shadow: none !important; /* Remove any box shadow on scroll */
 }
 
+.section-container {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Light gray background for contrast */
+}
+
+.section-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #4A148C; /* Dark purple text color */
+  margin-top: 50px; /* Adjust margin-top to position it lower */
+  margin-bottom: 40px;
+}
+.section-container {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Light gray background for contrast */
+}
+
+.section-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #000000; 
+  margin-top: 50px; /* Adjust margin-top to position it lower */
+  margin-bottom: 40px;
+}
+
+/* Load Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Apply Montserrat font to the entire page */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+  border: none; /* Remove any default border */
+  background-color: transparent !important; /* Ensure background is transparent initially */
+}
+
+.navbar-nav > li > a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px; /* Make the font size larger */
+  font-weight: bold; /* Make the font bold */
+  color: #4A148C !important; /* Dark purple text color with !important */
+  background-color: #fff; /* White background for buttons */
+  padding: 12px 20px; /* Adjust padding for spacing */
+  display: block;
+  text-align: center; /* Center text in the navbar links */
+  border-radius: 4px; /* Rounded corners for buttons */
+  text-decoration: none; /* Remove underline from links */
+  margin: 0 5px; /* Spacing between buttons */
+  box-shadow: none; /* Remove any box shadow that might create unwanted lines */
+  border: none; /* Remove any border */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar-nav > li > a:hover {
+  background-color: #f8f9fa; /* Slightly gray background on hover */
+  color: #166cd5 !important; /* Slightly lighter purple on hover with !important */
+  border: none; /* Ensure no border on hover */
+}
+
+/* Prevent navbar from changing color on scroll */
+.navbar.scrolled {
+  background-color: transparent !important; /* Ensure navbar stays transparent */
+  box-shadow: none !important; /* Remove any box shadow on scroll */
+}
+
+/* Section Styles */
+/* Load Montserrat Font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Apply Montserrat font to the entire page */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar Styles */
+.navbar {
+  border: none; /* Remove any default border */
+  background-color: transparent !important; /* Ensure background is transparent initially */
+}
+
+.navbar-nav > li > a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px; /* Make the font size larger */
+  font-weight: bold; /* Make the font bold */
+  color: #4A148C !important; /* Dark purple text color with !important */
+  background-color: #fff; /* White background for buttons */
+  padding: 12px 20px; /* Adjust padding for spacing */
+  display: block;
+  text-align: center; /* Center text in the navbar links */
+  border-radius: 4px; /* Rounded corners for buttons */
+  text-decoration: none; /* Remove underline from links */
+  margin: 0 5px; /* Spacing between buttons */
+  box-shadow: none; /* Remove any box shadow that might create unwanted lines */
+  border: none; /* Remove any border */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.navbar-nav > li > a:hover {
+  background-color: #f8f9fa; /* Slightly gray background on hover */
+  color: #166cd5 !important; /* Slightly lighter purple on hover with !important */
+  border: none; /* Ensure no border on hover */
+}
+
+/* Prevent navbar from changing color on scroll */
+.navbar.scrolled {
+  background-color: transparent !important; /* Ensure navbar stays transparent */
+  box-shadow: none !important; /* Remove any box shadow on scroll */
+}
+
+/* Section Styles */
+.section-container {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Light gray background for contrast */
+}
+
+.section-container h2 {
+  text-align: center;
+  color: #4A148C; /* Dark purple text color */
+  margin-top: 50px; /* Adjust margin-top to position it lower */
+  margin-bottom: 20px; /* Reduced margin to decrease the gap */
+  font-size: 32px; /* Make the font size larger */
+}
+
+.section-container h3 {
+  font-size: 24px; /* Make the font size larger */
+  color: #4A148C; /* Dark purple text color */
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.section-container p {
+  font-size: 18px; /* Make the font size larger for paragraphs */
+  line-height: 1.6; /* Improve readability */
+}
+
+/* Image Styles */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: rounded corners for images */
+}
+
+
+/* Image Styles */
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px; /* Optional: rounded corners for images */
+}
+/* Compact list styles for Leadership & Extracurriculars */
+.leadership-list {
+  list-style-type: none; /* Remove default bullets */
+  padding: 0;
+  margin: 0;
+  font-size: 18px; /* Keep the font size consistent */
+}
+
+.leadership-list li {
+  margin-bottom: 10px; /* Space between items */
+  position: relative; /* Positioning for bullet customization */
+  padding-left: 20px; /* Space for custom bullets */
+}
+
+.leadership-list li::before {
+  content: '•'; /* Custom bullet character */
+  color: #4A148C; /* Purple color for bullets */
+  position: absolute; /* Positioning for bullet */
+  left: 0; /* Align bullet to the left */
+  font-size: 24px; /* Size of the bullet */
+}
+
   </style>
 </head>
 
 <body>
   <!-- Add your content of header -->
   <header>
-    <nav class="navbar navbar-fixed-top navbar-default">
+    <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
-          aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -75,53 +249,54 @@
 
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="./index.html" title="">Home</a></li>
-            <li><a href="./projects.html" title="">Projects</a></li>
-            <li><a href="./about.html" title="">About Me</a></li>
-            <li><a href="./contact.html" title="">Contact</a></li>
+            <li><a href="./index.html" title="" style="color:antiquewhite;">Home</a></li>
+            <li><a href="./index.html#experience" title="" style="color:antiquewhite;">Experience</a></li>
+            <li><a href="./projects.html" title="" style="color:antiquewhite;">Projects</a></li>
+            <li><a href="./about.html" title="" style="color:antiquewhite;">About Me</a></li>
+            <li><a href="./contact.html" title="" style="color:antiquewhite;">Contact</a></li>
           </ul>
-        </div>
+        </div> 
       </div>
     </nav>
   </header>
-
   <div class="section-container">
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <div class="section-container-spacer text-center">
-            <h1 class="h2">About Me</h1>
+            <h2>About Me</h2>
           </div>
-
+  
           <div class="row">
             <div class="col-md-10 col-md-offset-1">
               <div class="row">
                 <div class="col-xs-12 col-md-6">
                   <h3>Sophomore at NYU</h3>
-                  <p>Currently pursuing a joint major in Computer and Data Science.
-                    Relevant coursework includes Data Structures and Algorithms, Object-Oriented Programming, Discrete
-                    Mathematics, and Linear Algebra</p>
+                  <p>Currently pursuing a joint major in Computer and Data Science. <br> <br> Relevant coursework includes Data Structures and Algorithms, Object-Oriented Programming, Discrete Mathematics, and Linear Algebra.</p>
                   <p>&nbsp;</p>
-                  <h3>Leadership & Extracurriculars </h3>
-                  <p>Events Coordinator and Social Media Manager of Bengali Students Association, NYU Men's Ultimate
-                    Frisbee Team, Intramural Basketball
+                  <h3>Leadership & Extracurriculars</h3>
+                  <ul class="leadership-list">
+                    <li>Founder of TechTogether, an online study group for students in tech.</li>
+                    <li>Events Coordinator of NYU Bengali Students Association</li>
+                    <li>Social Media Manager of NYU Men's Ultimate Frisbee Team</li>
+                    <li>Intramural Basketball Captain</li>
+                  </ul>
                   <p>&nbsp;</p>
                   <h3>Hobbies</h3>
-                  <p>I am really passionate about machine learning and artificial intelligence. Besides coding, I also
-                    like to do filmmaking and journaling in my free time.
-                  </p>
+                  <p>Besides coding, I also like to do filmmaking and journaling in my free time.</p>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                  <img src="./assets/images/profil.jpg" class="img-responsive" alt="">
+                  <img src="./assets/images/profil.jpg" class="img-responsive" alt="Profile Image">
                 </div>
               </div>
             </div>
           </div>
-
+  
         </div>
       </div>
     </div>
   </div>
+  
 
   <script>
     document.addEventListener("DOMContentLoaded", function (event) {

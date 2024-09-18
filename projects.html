@@ -5,14 +5,18 @@
   <meta charset="UTF-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width,initial-scale=1" name="viewport">
-  <meta content="Projects" name="description">
+  <meta content="description" name="description">
   <meta name="google" content="notranslate" />
   <meta content="Mashup templates have been developed by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
 
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
   <link href="./assets/favicon.ico" rel="icon">
-  <title>Projects</title>  
+
+  <title>My Projects</title>
+
   <link href="./main.3f6952e4.css" rel="stylesheet">
   <style>
     /* Load Montserrat Font */
@@ -20,90 +24,108 @@
 
     /* Navbar Styles */
     .navbar {
-      border: none;
-      background-color: transparent !important;
-      box-shadow: none;
+      border: none; /* Remove any default border */
+      background-color: transparent !important; /* Ensure background is transparent initially */
     }
 
     .navbar-nav > li > a {
       font-family: 'Montserrat', sans-serif;
-      font-size: 18px;
-      font-weight: bold;
-      color: #4A148C !important;
-      background-color: #fff;
-      padding: 12px 20px;
+      font-size: 18px; /* Make the font size larger */
+      font-weight: bold; /* Make the font bold */
+      color: #4A148C !important; /* Dark purple text color with !important */
+      background-color: #fff; /* White background for buttons */
+      padding: 12px 20px; /* Adjust padding for spacing */
       display: block;
-      text-align: center;
-      border-radius: 4px;
-      text-decoration: none;
-      margin: 0 5px;
-      box-shadow: none;
-      border: none;
-      transition: background-color 0.3s, color 0.3s;
+      text-align: center; /* Center text in the navbar links */
+      border-radius: 4px; /* Rounded corners for buttons */
+      text-decoration: none; /* Remove underline from links */
+      margin: 0 5px; /* Spacing between buttons */
+      box-shadow: none; /* Remove any box shadow that might create unwanted lines */
+      border: none; /* Remove any border */
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
     }
 
     .navbar-nav > li > a:hover {
-      background-color: #f8f9fa;
-      color: #166cd5 !important;
-      border: none;
+      background-color: #f8f9fa; /* Slightly gray background on hover */
+      color: #166cd5 !important; /* Slightly lighter purple on hover with !important */
+      border: none; /* Ensure no border on hover */
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden !important;
-      overflow-y: auto !important;
-      -webkit-overflow-scrolling: touch !important;
-      overscroll-behavior: auto !important;
+    /* Prevent navbar from changing color on scroll */
+    .navbar.scrolled {
+      background-color: transparent !important; /* Ensure navbar stays transparent */
+      box-shadow: none !important; /* Remove any box shadow on scroll */
     }
 
-    /* Section and project item styles */
+    /* Projects Section */
     .section-container {
       padding: 60px 0;
+      background-color: #f8f9fa; /* Light gray background for contrast */
     }
-    .section-container h1 {
+
+    .section-container h2 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
       margin-bottom: 40px;
     }
+
     .project-item {
-      margin-bottom: 40px;
-    }
-    .project-item img {
-      max-width: 100%;
-      height: auto;
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background-color: #fff;
       border-radius: 8px;
-      display: block;
-      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .project-item h4,
-    .project-item h3,
-    .project-item p {
-      margin: 0;
-      padding: 0;
+
+    .project-item img {
+      max-width: 200px;
+      border-radius: 8px;
+      margin-right: 20px;
     }
-    .project-item h4 {
-      margin-bottom: 10px;
-    }
+
     .project-item h3 {
-      margin-bottom: 10px;
-    }
-    .project-item p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
       margin-bottom: 10px;
     }
 
-    /* Ensure body and html allow scrolling */
-    html, body {
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      height: 100%;
+    .project-item p {
+      font-size: 16px;
+      line-height: 1.6;
     }
+
+    .project-links a {
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 18px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    .section-container {
+  padding: 60px 0;
+  background-color: #f8f9fa; /* Light gray background for contrast */
+}
+
+.section-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #4A148C; /* Dark purple text color */
+  margin-top: 50px; /* Adjust margin-top to position it lower */
+  margin-bottom: 40px;
+}
+
   </style>
 </head>
 
 <body>
+  <!-- Add your content of header -->
   <header>
     <nav class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
@@ -113,12 +135,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="./index.html" title="">Home</a></li>
-            <li><a href="./projects.html" title="">Projects</a></li>
-            <li><a href="./about.html" title="">About Me</a></li>
-            <li><a href="./contact.html" title="">Contact</a></li>
+            <li><a href="./index.html" title="" style="color:antiquewhite;">Home</a></li>
+            <li><a href="./index.html#experience" title="" style="color:antiquewhite;">Experience</a></li>
+            <li><a href="./projects.html" title="" style="color:antiquewhite;">Projects</a></li>
+            <li><a href="./about.html" title="" style="color:antiquewhite;">About Me</a></li>
+            <li><a href="./contact.html" title="" style="color:antiquewhite;">Contact</a></li>
           </ul>
         </div> 
       </div>
@@ -127,57 +151,66 @@
 
   <div class="section-container">
     <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 text-center">
-          <h1 class="h2">Projects</h1>
+      <h2>My Projects</h2>
+
+      <div class="project-item">
+        <img src="./assets/images/ai-chatbot.png" alt="AI Chatbot">
+        <div>
+          <h3>AI Chatbot</h3>
+          <p>Developed an <strong>AI chatbot</strong> integrated with OpenAI's <strong>GPT-4</strong>, implementing system prompts for clear and respectful user interactions.</p>
+          <p>Handled <strong>API requests</strong> and <strong>responses</strong>, including streaming and <strong>real-time</strong> data processing, to provide timely and accurate answers.</p>
+          <div class="project-links">
+            <a href="https://github.com/mrassell/ai-chatbot" target="_blank">GitHub</a> | 
+            <a href="https://aichatbotmrassell.vercel.app/" target="_blank">Deployment</a>
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-4 project-item">
-          <img src="./assets/images/project01.jpg" alt="LeetMath">
-          <h4>July 2024</h4>
-          <h3>LeetMath</h3>
-          <p>A Leetcode-like platform for math questions with AI support, built during a hackathon.</p>
-          <a href="https://github.com/maheenrassell/leetmath" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
-        <div class="col-sm-4 project-item">
-          <img src="./assets/images/project02.jpg" alt="Number Recognition Model">
-          <h4>June 2024 - July 2024</h4>
-          <h3>Number Recognition Model</h3>
-          <p>Developed a machine learning model from scratch to recognize handwritten numbers, achieving 80% accuracy.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
-        <div class="col-sm-4 project-item">
-          <img src="./assets/images/project03.jpg" alt="Online Chatbot">
-          <h4>May 2024</h4>
-          <h3>League of Legends Chatbot</h3>
-          <p>Created an online chatbot that answers questions about League of Legends using AI and web scraping techniques.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
-        <div class="col-sm-4 project-item">
-          <img src="./assets/images/project03.jpg" alt="Online Chatbot">
-          <h4>May 2024</h4>
-          <h3>League of Legends Chatbot</h3>
-          <p>Created an online chatbot that answers questions about League of Legends using AI and web scraping techniques.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
-        <div class="col-sm-4 project-item">
-          <img src="./assets/images/project03.jpg" alt="Online Chatbot">
-          <h4>May 2024</h4>
-          <h3>League of Legends Chatbot</h3>
-          <p>Created an online chatbot that answers questions about League of Legends using AI and web scraping techniques.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
-        <div class="col-sm-4 project-item">
-          <img src="./assets/images/project03.jpg" alt="Online Chatbot">
-          <h4>May 2024</h4>
-          <h3>League of Legends Chatbot</h3>
-          <p>Created an online chatbot that answers questions about League of Legends using AI and web scraping techniques.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
+
+      <div class="project-item">
+        <img src="./assets/images/maze-solver.png" alt="Maze Solver">
+        <div>
+          <h3>Maze Solver</h3>
+          <p>Developed a <strong>Python script</strong> implementing a <strong>breadth-first search (BFS)</strong> algorithm to find the <strong>optimal path</strong> in a maze using the <code>curses</code> library.</p>
+          <div class="project-links">
+            <a href="https://github.com/mrassell/maze-solver" target="_blank">GitHub</a>
+          </div>
         </div>
       </div>
+
+      <div class="project-item">
+        <img src="./assets/images/inventory-manager.png" alt="Inventory Manager Web App">
+        <div>
+          <h3>Inventory Manager Web App</h3>
+          <p>Built a web application for managing pantry and storage items using <strong>Next.js</strong> and <strong>Majuro UI</strong> components, incorporating full <strong>CRUD</strong> (<strong>Create</strong>, <strong>Read</strong>, <strong>Update</strong>, <strong>Delete</strong>) functionalities to enhance inventory management.</p>
+          <p>Integrated <strong>Firebase</strong> for real-time data synchronization and persistent local caching with <strong>Firestore</strong>, ensuring reliable performance and offline accessibility.</p>
+          <div class="project-links">
+            <a href="https://github.com/mrassell/inventory-manager" target="_blank">GitHub</a> |
+            <a href="https://inventory-manager-seven-theta.vercel.app/" target="_blank">Deployment</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <img src="./assets/images/aim-trainer.png" alt="Aim Trainer">
+        <div>
+          <h3>Aim Trainer</h3>
+          <p>Developed a <strong>Mouse-click aim trainer</strong> using <strong>Pygame</strong> to help improve targeting accuracy.</p>
+          <div class="project-links">
+            <a href="https://github.com/mrassell/aim-trainer" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+      navActivePage();
+    });
+  </script>
+
+  <script type="text/javascript" src="./main.70a66962.js"></script>
 </body>
 
 </html>

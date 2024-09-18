@@ -30,20 +30,18 @@
 
     .section-container h1 {
       margin-bottom: 40px;
+      font-family: 'Montserrat', sans-serif; /* Change Experience header font */
     }
 
     .experience-item {
       margin-bottom: 40px;
-      text-align: center; /* Center-align text and buttons */
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center items horizontally */
+      text-align: left; /* Align text to the left */
     }
 
     .experience-item img {
-      width: 100%; /* Ensure images take full width of their container */
-      height: auto; /* Maintain aspect ratio */
-      max-width: 300px; /* Set a max-width to ensure uniform size */
+      width: 100%;
+      height: auto;
+      max-width: 300px;
       border-radius: 8px;
       margin-bottom: 20px;
     }
@@ -53,42 +51,68 @@
     .experience-item p {
       margin: 0;
       padding: 0;
-      font-family: 'Montserrat', sans-serif; /* Ensure Montserrat font for all text */
+      font-family: 'Montserrat', sans-serif;
     }
 
     .experience-item h4 {
       margin-bottom: 10px;
-      font-size: 18px; /* Adjust font size for years */
-      font-weight: 400; /* Regular weight */
+      font-size: 16px; /* Adjusted font size */
+      font-weight: 400;
     }
 
     .experience-item h3 {
       margin-bottom: 10px;
-      font-size: 24px; /* Increased font size for titles */
-      font-weight: 700; /* Bold */
+      font-size: 22px; /* Adjusted font size */
+      font-weight: 700;
     }
 
     .experience-item p {
-      margin: 0; /* Ensure no extra margin */
-      font-size: 18px; /* Adjusted size to match titles */
-      line-height: 1.5; /* Improve readability */
+      margin: 0;
+      font-size: 12px; /* Adjusted font size */
+      line-height: 1.5;
     }
 
     .experience-item .btn-container {
-      margin-top: 20px; /* Space above the buttons */
+      margin-top: 20px;
     }
 
     .experience-item a.btn {
       display: block;
-      margin: 10px auto; /* Center-align buttons and space them vertically */
+      margin: 10px 0;
       padding: 10px 20px;
       text-decoration: none;
       color: #fff;
-      background-color: #007bff; /* Example button color */
+      background-color: #007bff;
       border-radius: 4px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 16px; /* Font size for button text */
+      font-size: 16px;
     }
+
+    /* Added extra space below Experience header for images */
+    #experience {
+      margin-bottom: 50px;
+    }
+
+    .year-location {
+  font-size: 18px; /* Font size for the year and location */
+  color: #333; /* Dark gray for year and location */
+  margin-bottom: 15px;
+}
+
+.responsibilities {
+  font-size: 16px; /* Same size for all responsibility text */
+  color: #333; /* Dark gray for text */
+  list-style-type: disc; /* Bullet points */
+  padding-left: 20px; /* Space before the bullet points */
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.responsibilities strong {
+  font-weight: bold; /* Ensure text in strong tags is bold */
+  color: #060ba280; /* Optional: Change color to black for stronger emphasis */
+}
+
   </style>
 </head>
 
@@ -107,6 +131,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="./index.html" title="" style="color:antiquewhite;">Home</a></li>
+            <li><a href="#experience" title="" style="color:antiquewhite;">Experience</a></li>
             <li><a href="./projects.html" title="" style="color:antiquewhite;">Projects</a></li>
             <li><a href="./about.html" title="" style="color:antiquewhite;">About Me</a></li>
             <li><a href="./contact.html" title="" style="color:antiquewhite;">Contact</a></li>
@@ -137,41 +162,58 @@
       </div>
     </div>
   </div>
-
-  <!-- Experience and Projects Section -->
-  <div class="section-container">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 text-center">
-          <h1 class="h2">Experience</h1>
-        </div>
+ <!-- Experience Section -->
+<div class="section-container" id="experience">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h1 class="h2">Experience</h1>
       </div>
-      <div class="row">
-        <div class="col-sm-4 experience-item">
-          <img src="./assets/images/work01-hover.jpg" alt="Headstarter Fellow">
-          <h4>July 2024</h4>
-          <h3>Headstarter Fellow</h3>
-          <p><strong>Built 5 AI apps & APIs.</strong> Coached by Amazon, Bloomberg, and Capital One engineers. Developed skills in NextJS, OpenAI, Pinecone, StripeAPI.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
-        <div class="col-sm-4 experience-item">
-          <img src="./assets/images/work02-hover.jpg" alt="Buildspace Developer">
-          <h4>June 2024 - July 2024</h4>
-          <h3>Buildspace Developer</h3>
-          <p><strong>Developed a number recognition model from scratch in Python.</strong> Achieved 85% accuracy using linear algebra and matrix transformations.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
-        <div class="col-sm-4 experience-item">
-          <img src="./assets/images/work03-hover.jpg" alt="Verste Web Designer">
-          <h4>June 2022 - Aug 2022</h4>
-          <h3>Verste Web Designer</h3>
-          <p><strong>Collaborated on website edits in HTML, CSS, and JavaScript.</strong> Developed infographics and flyers for social media, and simplified 15+ research articles.</p>
-          <a href="https://github.com/maheenrassell" title="" class="btn btn-default">Github (not yet)</a>
-        </div>
+    </div>
+    <div class="row">
+      <!-- Dunkin Donuts Experience -->
+      <div class="col-sm-4 experience-item">
+        <img src="./assets/images/dunkin-donuts.jpg" alt="Dunkin Donuts Experience">
+        <h3 class="company-name">Dunkin'</h3>
+        <h4 class="role"><strong>Branch Finances Management</strong></h4>
+        <p class="year-location">March 2021 – Present | New York, NY</p>
+        <ul class="responsibilities">
+          <li>Consolidating and analyzing weekly, monthly, and yearly financial reports for franchisee using <strong>Excel</strong>.</li>
+          <li>Reconciling <strong>over 100</strong> daily sales reports of customer transactions in <strong>Oracle</strong>.</li>
+          <li>Constructing weekly employee schedules and organize office materials.</li>
+        </ul>
+      </div>
+
+      <!-- Buildspace Experience -->
+      <div class="col-sm-4 experience-item">
+        <img src="./assets/images/buildspace.jpg" alt="Buildspace Experience">
+        <h3 class="company-name">Buildspace</h3>
+        <h4 class="role"><strong>Software Developer</strong></h4>
+        <p class="year-location">June 2024 – July 2024 | Remote</p>
+        <ul class="responsibilities">
+          <li>Developed a <strong>neural network</strong> model from scratch (no TensorFlow or PyTorch) using NumPy to classify handwritten digits from the <strong>MNIST dataset</strong>, achieving <strong>85%</strong> accuracy.</li>
+          <li>Preprocessed and normalized dataset of <strong>60,000</strong> training images and <strong>10,000</strong> testing images with pandas.</li>
+          <li>Implemented <strong>ReLU</strong> and <strong>softmax</strong> activation functions for better performance.</li>
+        </ul>
+        <a href="https://ordinary-health-cab.notion.site/Image-Classification-Neural-Network-FROM-SCRATCH-72aa4de370f54d5d8a30dd50da0a92f3?pvs=74" class="btn btn-default">View Work</a>
+        <a href="https://www.youtube.com/watch?v=RmDJ16-DuYU&ab_channel=MaheenRassell" class="btn btn-default">Watch Neural Network Demo</a>
+      </div>
+
+      <!-- Verste Experience -->
+      <div class="col-sm-4 experience-item">
+        <img src="./assets/images/verste.jpg" alt="Verste Experience">
+        <h3 class="company-name">Verste</h3>
+        <h4 class="role"><strong>Graphic Design Intern</strong></h4>
+        <p class="year-location">June 2022 – Aug 2022 | Remote </p>
+        <ul class="responsibilities">
+          <li>Developed infographics and flyers to increase interaction on social media for a non-profit.</li>
+          <li>Collaborated with team to edit and draft website in <strong>HTML, CSS, and JavaScript (UI/UX)</strong>.</li>
+          <li>Simplified over <strong>15</strong> research articles for website content.</li>
+        </ul>
       </div>
     </div>
   </div>
-
+</div>
   <script>
     document.addEventListener("DOMContentLoaded", function (event) {
        type();
@@ -189,32 +231,28 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
   /* Navbar Styles */
-  /* Navbar Styles */
-.navbar {
-  border: none; /* Remove any default border */
-}
+  .navbar {
+    border: none; /* Remove any default border */
+  }
 
-.navbar-nav > li > a {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px; /* Make the font size larger */
-  font-weight: bold; /* Make the font bold */
+  .navbar-nav > li > a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; /* Make the font size larger */
+    font-weight: bold; /* Make the font bold */
+    color: #4A148C !important; /* Dark purple text color with !important */
+    background-color: #fff; /* White background for buttons */
+    padding: 12px 20px; 
+  }
+
+  .navbar-nav > li > a:hover {
+    background-color: #f8f9fa; /* Slightly gray background on hover */
+    color: #c884f3 !important; /* Slightly lighter purple on hover with !important */
+  }
+
+  #experience h1.h2 {
+  margin-left: calc(50% - 150px); /* Adjust 150px based on your title width */
+  font-size: 36px; /* Adjust font size if needed */
+  margin-bottom: 40px; /* Add space below the title if needed */
   color: #4A148C !important; /* Dark purple text color with !important */
-  background-color: #fff; /* White background for buttons */
-  padding: 12px 20px; /* Adjust padding for spacing */
-  display: block;
-  text-align: center; /* Center text in the navbar links */
-  border-radius: 4px; /* Rounded corners for buttons */
-  text-decoration: none; /* Remove underline from links */
-  margin: 0 5px; /* Spacing between buttons */
-  box-shadow: none; /* Remove any box shadow that might create unwanted lines */
-  border: none; /* Remove any border */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
-}
 
-.navbar-nav > li > a:hover {
-  background-color: #f8f9fa; /* Slightly gray background on hover */
-  color: #6A1B9A !important; /* Slightly lighter purple on hover with !important */
-  border: none; /* Ensure no border on hover */
 }
-</style>
-
