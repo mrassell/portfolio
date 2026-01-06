@@ -1,0 +1,23 @@
+# Place your artifact images and PDFs here
+
+## Recommended file names:
+
+### CS Club Workshop
+# workshop-attendance.png     - Before/after attendance chart
+# workshop-qa-form.png        - Anonymous Q&A form screenshot (optional)
+# workshop-outline.pdf        - Facilitator guide
+
+### AI Debate Platform
+# debate-platform-main.png    - Main interface screenshot
+# debate-feedback.png         - Feedback panel view
+# debate-revision.png         - Before/after example
+# debate-rubric.pdf           - Sample rubric document
+
+### Revise-and-Resubmit Capstone
+# capstone-flow.png           - Flow diagram
+# capstone.pdf                - Full capstone write-up
+
+### Journaling Analytics
+# journal-trajectory.png      - Mood over time chart
+# journal-states.png          - HMM state transition diagram
+
