@@ -1,37 +1,20 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Learning Design & EdTech Portfolio - mrassell',
   description: 'Designing for students who disengage quietly: feedback loops, psychological safety, and practice environments that make revision feel normal.',
 };
 
-/* =============================================================================
-   REUSABLE FIGURE COMPONENT
-   - Handles any image size gracefully
-   - Consistent borders, shadows, captions
-   - Responsive on mobile
-============================================================================= */
-
-interface FigureProps {
-  src: string;
-  alt: string;
-  caption?: string;
-  priority?: boolean;
-}
-
-function Figure({ src, alt, caption, priority = false }: FigureProps) {
+/* Figure Component */
+function Figure({ src, alt, caption }) {
   return (
     <figure className="my-6">
       <div className="relative overflow-hidden rounded-lg border border-stone-200 bg-stone-100 shadow-sm">
-        {/* Container that adapts to image while constraining max size */}
         <div className="relative w-full">
           <img
             src={src}
             alt={alt}
             className="w-full h-auto max-h-[500px] object-contain bg-white"
-            loading={priority ? "eager" : "lazy"}
           />
         </div>
       </div>
@@ -44,43 +27,8 @@ function Figure({ src, alt, caption, priority = false }: FigureProps) {
   );
 }
 
-/* =============================================================================
-   IMAGE GALLERY - For multiple images side by side
-============================================================================= */
-
-interface GalleryProps {
-  images: { src: string; alt: string; caption?: string }[];
-}
-
-function Gallery({ images }: GalleryProps) {
-  return (
-    <div className={`my-6 grid gap-4 ${images.length === 2 ? 'md:grid-cols-2' : images.length >= 3 ? 'md:grid-cols-3' : ''}`}>
-      {images.map((img, i) => (
-        <figure key={i} className="m-0">
-          <div className="relative overflow-hidden rounded-lg border border-stone-200 bg-stone-100 shadow-sm aspect-video">
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="absolute inset-0 w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-          {img.caption && (
-            <figcaption className="mt-2 text-center text-xs text-stone-400">
-              {img.caption}
-            </figcaption>
-          )}
-        </figure>
-      ))}
-    </div>
-  );
-}
-
-/* =============================================================================
-   PLACEHOLDER - Shows where to add images (remove when you add real images)
-============================================================================= */
-
-function ImagePlaceholder({ label, aspectRatio = "video" }: { label: string; aspectRatio?: "video" | "square" | "wide" }) {
+/* Image Placeholder */
+function ImagePlaceholder({ label, aspectRatio = "video" }) {
   const aspectClass = {
     video: "aspect-video",
     square: "aspect-square",
@@ -97,14 +45,10 @@ function ImagePlaceholder({ label, aspectRatio = "video" }: { label: string; asp
   );
 }
 
-/* =============================================================================
-   MAIN PAGE
-============================================================================= */
-
 export default function LearningDesignPage() {
   return (
     <div className="min-h-screen bg-stone-50">
-      {/* Simple Header */}
+      {/* Header */}
       <header className="border-b border-stone-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">
@@ -115,7 +59,7 @@ export default function LearningDesignPage() {
       </header>
 
       <main className="max-w-4xl mx-auto px-4 py-12 space-y-12">
-        {/* Hero / Intro Section */}
+        {/* Hero / Intro */}
         <section className="space-y-6">
           <div className="space-y-3">
             <h1 className="text-4xl font-semibold text-stone-900 tracking-tight">
@@ -165,10 +109,7 @@ export default function LearningDesignPage() {
           </nav>
         </section>
 
-        {/* =========================================================================
-            PROJECT 1: CS Club Workshop
-            Images: 1-2 (attendance chart, optional Q&A form)
-        ========================================================================= */}
+        {/* PROJECT 1: CS Club Workshop */}
         <section id="cs-club-workshop" className="bg-white rounded-xl border border-stone-200 p-6 md:p-8 shadow-sm scroll-mt-20">
           <div className="space-y-6">
             <div>
@@ -214,21 +155,6 @@ export default function LearningDesignPage() {
                 </ul>
               </div>
 
-              {/* 
-                ┌─────────────────────────────────────────────────────────────┐
-                │  WORKSHOP IMAGES - Replace placeholders with real images    │
-                │  Recommended: 1 attendance chart + 1 optional Q&A form      │
-                └─────────────────────────────────────────────────────────────┘
-                
-                To add real images:
-                1. Save image to /public/artifacts/workshop-attendance.png
-                2. Replace ImagePlaceholder with:
-                   <Figure 
-                     src="/artifacts/workshop-attendance.png" 
-                     alt="Attendance growth chart" 
-                     caption="Figure 1: Weekly attendance before and after the workshop"
-                   />
-              */}
               <ImagePlaceholder label="Attendance Chart (before/after)" />
 
               <div>
@@ -253,21 +179,13 @@ export default function LearningDesignPage() {
 
               <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
                 <span className="text-stone-400">Artifacts:</span>
-                <a href="#" className="text-stone-600 hover:text-stone-900 underline underline-offset-2">
-                  Workshop Outline (coming soon)
-                </a>
-                <a href="#" className="text-stone-600 hover:text-stone-900 underline underline-offset-2">
-                  Slides (coming soon)
-                </a>
+                <span className="text-stone-500">Workshop Outline (coming soon)</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* =========================================================================
-            PROJECT 2: AI Debate Platform
-            Images: 3-4 (main UI, feedback view, before/after example)
-        ========================================================================= */}
+        {/* PROJECT 2: AI Debate Platform */}
         <section id="ai-debate-platform" className="bg-white rounded-xl border border-stone-200 p-6 md:p-8 shadow-sm scroll-mt-20">
           <div className="space-y-6">
             <div>
@@ -295,19 +213,6 @@ export default function LearningDesignPage() {
                 </p>
               </div>
 
-              {/* 
-                ┌─────────────────────────────────────────────────────────────┐
-                │  DEBATE PLATFORM HERO IMAGE - Main interface screenshot     │
-                └─────────────────────────────────────────────────────────────┘
-                
-                To add:
-                <Figure 
-                  src="/artifacts/debate-platform-main.png" 
-                  alt="AI Debate Platform main interface" 
-                  caption="Main interface where students submit their arguments"
-                  priority={true}
-                />
-              */}
               <ImagePlaceholder label="Main Interface Screenshot" />
 
               <div>
@@ -328,17 +233,6 @@ export default function LearningDesignPage() {
                 </ul>
               </div>
 
-              {/* 
-                ┌─────────────────────────────────────────────────────────────┐
-                │  FEEDBACK VIEW + BEFORE/AFTER - Side by side gallery        │
-                └─────────────────────────────────────────────────────────────┘
-                
-                To add multiple images:
-                <Gallery images={[
-                  { src: "/artifacts/debate-feedback.png", alt: "Feedback panel", caption: "Rubric-based feedback" },
-                  { src: "/artifacts/debate-revision.png", alt: "Before and after", caption: "Response improvement" }
-                ]} />
-              */}
               <div className="my-6 grid gap-4 md:grid-cols-2">
                 <div className="aspect-video rounded-lg border-2 border-dashed border-stone-300 bg-stone-50 flex items-center justify-center">
                   <div className="text-center p-4">
@@ -373,21 +267,13 @@ export default function LearningDesignPage() {
 
               <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
                 <span className="text-stone-400">Artifacts:</span>
-                <a href="#" className="text-stone-600 hover:text-stone-900 underline underline-offset-2">
-                  Sample Rubric (coming soon)
-                </a>
-                <a href="#" className="text-stone-600 hover:text-stone-900 underline underline-offset-2">
-                  Live Demo (coming soon)
-                </a>
+                <span className="text-stone-500">Sample Rubric (coming soon)</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* =========================================================================
-            PROJECT 3: Revise-and-Resubmit Capstone
-            Images: 1-2 (flow diagram, worked example)
-        ========================================================================= */}
+        {/* PROJECT 3: Revise-and-Resubmit Capstone */}
         <section id="revise-resubmit-capstone" className="bg-white rounded-xl border border-stone-200 p-6 md:p-8 shadow-sm scroll-mt-20">
           <div className="space-y-6">
             <div>
@@ -435,17 +321,6 @@ export default function LearningDesignPage() {
                 </ol>
               </div>
 
-              {/* 
-                ┌─────────────────────────────────────────────────────────────┐
-                │  FLOW DIAGRAM - Visual of the learning loop                 │
-                └─────────────────────────────────────────────────────────────┘
-                
-                <Figure 
-                  src="/artifacts/capstone-flow.png" 
-                  alt="Revise-and-resubmit flow diagram" 
-                  caption="Figure: The five-step revision loop"
-                />
-              */}
               <ImagePlaceholder label="Flow Diagram: Prompt → Submit → Feedback → Revise → Reflect" aspectRatio="wide" />
 
               <div>
@@ -513,18 +388,13 @@ export default function LearningDesignPage() {
 
               <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
                 <span className="text-stone-400">Artifacts:</span>
-                <a href="#" className="text-stone-600 hover:text-stone-900 underline underline-offset-2">
-                  Capstone PDF (coming soon)
-                </a>
+                <span className="text-stone-500">Capstone PDF (coming soon)</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* =========================================================================
-            PROJECT 4: Journaling-Based Learning Analytics
-            Images: 2-3 (mood trajectory, state transitions)
-        ========================================================================= */}
+        {/* PROJECT 4: Journaling Analytics */}
         <section id="journaling-analytics" className="bg-white rounded-xl border border-stone-200 p-6 md:p-8 shadow-sm scroll-mt-20">
           <div className="space-y-6">
             <div>
@@ -560,16 +430,6 @@ export default function LearningDesignPage() {
                 </ul>
               </div>
 
-              {/* 
-                ┌─────────────────────────────────────────────────────────────┐
-                │  JOURNALING VISUALIZATIONS - Data viz images                │
-                └─────────────────────────────────────────────────────────────┘
-                
-                <Gallery images={[
-                  { src: "/artifacts/journal-trajectory.png", alt: "Mood over time", caption: "Motivation trajectory over 5 years" },
-                  { src: "/artifacts/journal-states.png", alt: "State transitions", caption: "HMM state transition diagram" }
-                ]} />
-              */}
               <div className="my-6 grid gap-4 md:grid-cols-2">
                 <div className="aspect-video rounded-lg border-2 border-dashed border-stone-300 bg-stone-50 flex items-center justify-center">
                   <div className="text-center p-4">
@@ -595,15 +455,13 @@ export default function LearningDesignPage() {
 
               <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
                 <span className="text-stone-400">Artifacts:</span>
-                <a href="#" className="text-stone-600 hover:text-stone-900 underline underline-offset-2">
-                  Write-up & Visualizations (coming soon)
-                </a>
+                <span className="text-stone-500">Write-up & Visualizations (coming soon)</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Closing Section */}
+        {/* Closing */}
         <section className="pt-4 border-t border-stone-200">
           <p className="text-stone-600 leading-relaxed">
             I built these projects as a student trying to keep quieter learners in the conversation, including my past self. Over time, I want to deepen the learning science and evaluation side of this work so I can design and test interventions with more rigor and reach. Until then, this page is my running record of what I am learning about how people stay, or drift, in a learning environment.
@@ -620,3 +478,4 @@ export default function LearningDesignPage() {
     </div>
   );
 }
+
