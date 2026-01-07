@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Club: Anonymous Questions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+
+        .description {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .question-group {
+            margin-bottom: 32px;
+        }
+
+        .question-group:last-child {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #1a1a1a;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CS Club: Anonymous Questions About Internships and Imposter Syndrome</h1>
+        <p class="description">
+            Your responses are completely anonymous. This is for shaping future workshops, not judging you.
+        </p>
+
+        <div class="question-group">
+            <label for="question1">What is one thing about internships you are afraid to say out loud?</label>
+            <textarea id="question1" name="question1" placeholder="Type your response here..."></textarea>
+        </div>
+
+        <div class="question-group">
+            <label for="question2">What makes you feel "behind" compared to others in CS?</label>
+            <textarea id="question2" name="question2" placeholder="Type your response here..."></textarea>
+        </div>
+
+        <div class="question-group">
+            <label for="question3">What would actually make it easier for you to show up to events like this regularly?</label>
+            <textarea id="question3" name="question3" placeholder="Type your response here..."></textarea>
+        </div>
+    </div>
+</body>
+</html>

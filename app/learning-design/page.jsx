@@ -155,12 +155,15 @@ export default function LearningDesignPage() {
                 </ul>
               </div>
 
-              <ImagePlaceholder label="Attendance Chart (before/after)" />
+              <Figure 
+                src="/artifacts/cs_workshop_attendance.png" 
+                alt="CS Club Workshop Attendance Chart showing increase from average 6.5 students before workshop to average 16.4 students after"
+              />
 
               <div>
                 <h3 className="font-semibold text-stone-800 mb-2">Evidence / Evaluation</h3>
                 <ul className="list-disc list-outside ml-5 space-y-1 text-stone-600">
-                  <li>Informal attendance tracking: single-digit weekly attendance before the workshop increased to around 15 consistent attendees afterward.</li>
+                  <li>Attendance tracking: average attendance almost doubled from 6.5 students before the workshop to 16.4 students afterward, representing a 152% increase.</li>
                   <li>Qualitative comments from participants:
                     <ul className="list-disc list-outside ml-5 mt-1">
                       <li className="italic">"It helped to see that other people were just as worried as I was."</li>
@@ -179,7 +182,9 @@ export default function LearningDesignPage() {
 
               <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
                 <span className="text-stone-400">Artifacts:</span>
-                <span className="text-stone-500">Workshop Outline (coming soon)</span>
+                <a href="https://www.notion.so/Attendance-Chart-2e1137ef07c780ebb1c9f50628f295c2?source=copy_link" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 hover:underline">Attendance Chart</a>
+                <a href="https://www.notion.so/Anonymous-Q-A-Form-2e1137ef07c7802d9828f6011290cccb?source=copy_link" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 hover:underline">Anonymous Q&A Form</a>
+                <a href="https://www.notion.so/End-of-Workshop-Checklist-2e1137ef07c780f19081dde4c2a0c40e?source=copy_link" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 hover:underline">End-of-Workshop Checklist</a>
               </div>
             </div>
           </div>
@@ -213,7 +218,11 @@ export default function LearningDesignPage() {
                 </p>
               </div>
 
-              <ImagePlaceholder label="Main Interface Screenshot" />
+              <Figure 
+                src="/artifacts/debate-platform-main.png" 
+                alt="AI Debate Platform main interface showing debate interface and feedback system"
+                caption="Main interface where students practice arguments and receive real-time feedback"
+              />
 
               <div>
                 <h3 className="font-semibold text-stone-800 mb-2">Learning Goals</h3>
@@ -234,18 +243,16 @@ export default function LearningDesignPage() {
               </div>
 
               <div className="my-6 grid gap-4 md:grid-cols-2">
-                <div className="aspect-video rounded-lg border-2 border-dashed border-stone-300 bg-stone-50 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <div className="text-stone-400 text-sm font-medium">Feedback Panel</div>
-                    <div className="text-stone-300 text-xs mt-1">Shows rubric scores</div>
-                  </div>
-                </div>
-                <div className="aspect-video rounded-lg border-2 border-dashed border-stone-300 bg-stone-50 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <div className="text-stone-400 text-sm font-medium">Before/After Example</div>
-                    <div className="text-stone-300 text-xs mt-1">Shows improvement</div>
-                  </div>
-                </div>
+                <Figure 
+                  src="/artifacts/debate-feedback.png" 
+                  alt="AI Debate Platform feedback panel showing rubric-based scoring"
+                  caption="Feedback panel with rubric scores and actionable suggestions"
+                />
+                <Figure 
+                  src="/artifacts/debate-revision.png" 
+                  alt="Game room interface showing debate practice environment"
+                  caption="Game room interface for debate practice"
+                />
               </div>
 
               <div>
@@ -265,10 +272,6 @@ export default function LearningDesignPage() {
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
-                <span className="text-stone-400">Artifacts:</span>
-                <span className="text-stone-500">Sample Rubric (coming soon)</span>
-              </div>
             </div>
           </div>
         </section>
@@ -321,7 +324,19 @@ export default function LearningDesignPage() {
                 </ol>
               </div>
 
-              <ImagePlaceholder label="Flow Diagram: Prompt → Submit → Feedback → Revise → Reflect" aspectRatio="wide" />
+              <div className="my-6 p-6 bg-stone-50 rounded-lg border border-stone-200">
+                <div className="flex items-center justify-center gap-2 text-stone-700 text-sm font-medium flex-wrap">
+                  <span>Prompt</span>
+                  <span>→</span>
+                  <span>Submit</span>
+                  <span>→</span>
+                  <span>Feedback</span>
+                  <span>→</span>
+                  <span>Revise</span>
+                  <span>→</span>
+                  <span>Reflect</span>
+                </div>
+              </div>
 
               <div>
                 <h3 className="font-semibold text-stone-800 mb-2">Rubric Snapshot</h3>
@@ -388,7 +403,7 @@ export default function LearningDesignPage() {
 
               <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
                 <span className="text-stone-400">Artifacts:</span>
-                <span className="text-stone-500">Capstone PDF (coming soon)</span>
+                <a href="https://www.notion.so/Revise-and-Resubmit-Feedback-Loop-for-Early-CS-and-Argumentation-Learners-2df137ef07c780b58917ea4427c30ad5?source=copy_link" target="_blank" rel="noopener noreferrer" className="text-stone-600 hover:text-stone-900 hover:underline">Capstone PDF</a>
               </div>
             </div>
           </div>
@@ -431,18 +446,16 @@ export default function LearningDesignPage() {
               </div>
 
               <div className="my-6 grid gap-4 md:grid-cols-2">
-                <div className="aspect-video rounded-lg border-2 border-dashed border-stone-300 bg-stone-50 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <div className="text-stone-400 text-sm font-medium">Mood Trajectory Chart</div>
-                    <div className="text-stone-300 text-xs mt-1">Time series over 5 years</div>
-                  </div>
-                </div>
-                <div className="aspect-video rounded-lg border-2 border-dashed border-stone-300 bg-stone-50 flex items-center justify-center">
-                  <div className="text-center p-4">
-                    <div className="text-stone-400 text-sm font-medium">State Transition Diagram</div>
-                    <div className="text-stone-300 text-xs mt-1">HMM visualization</div>
-                  </div>
-                </div>
+                <Figure 
+                  src="/artifacts/journal-trajectory.png" 
+                  alt="Sentiment analysis over time showing sentiment scores from journal entries"
+                  caption="Sentiment analysis over time showing patterns in emotional states"
+                />
+                <Figure 
+                  src="/artifacts/journal-states.png" 
+                  alt="Hidden Markov Model state transitions showing writing style patterns over time"
+                  caption="HMM state transitions revealing writing style patterns and transitions between states"
+                />
               </div>
 
               <div>
@@ -453,10 +466,6 @@ export default function LearningDesignPage() {
                 </ul>
               </div>
 
-              <div className="pt-4 border-t border-stone-100 flex flex-wrap gap-4 text-sm">
-                <span className="text-stone-400">Artifacts:</span>
-                <span className="text-stone-500">Write-up & Visualizations (coming soon)</span>
-              </div>
             </div>
           </div>
         </section>
