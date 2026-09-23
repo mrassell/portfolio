@@ -1,9 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
+import WaveHero from './components/WaveHero';
 
-function AccordionSection({ title, children, defaultOpen = false }) {
+interface AccordionSectionProps {
+  title: string;
+  children: ReactNode;
+  defaultOpen?: boolean;
+}
+
+function AccordionSection({ title, children, defaultOpen = false }: AccordionSectionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
@@ -33,7 +40,15 @@ function AccordionSection({ title, children, defaultOpen = false }) {
   );
 }
 
-function ExperienceCard({ title, company, date, location, children }) {
+interface ExperienceCardProps {
+  title: string;
+  company: string;
+  date?: string;
+  location?: string;
+  children: ReactNode;
+}
+
+function ExperienceCard({ title, company, date, location, children }: ExperienceCardProps) {
   return (
     <div className="bg-gradient-to-br from-stone-50 to-white rounded-lg border border-stone-200 p-5 hover:border-stone-300 transition-all duration-200">
       <div className="flex flex-wrap justify-between items-start gap-2 mb-3">
@@ -51,7 +66,12 @@ function ExperienceCard({ title, company, date, location, children }) {
   );
 }
 
-function ProjectCard({ title, children }) {
+interface ProjectCardProps {
+  title: string;
+  children: ReactNode;
+}
+
+function ProjectCard({ title, children }: ProjectCardProps) {
   return (
     <div className="bg-gradient-to-br from-stone-50 to-white rounded-lg border border-stone-200 p-5 hover:border-stone-300 hover:shadow-md transition-all duration-200">
       <h4 className="text-lg font-semibold text-stone-900 mb-3">{title}</h4>
@@ -70,6 +90,7 @@ export default function HomePage() {
           <nav className="flex gap-6 text-sm">
             <Link href="/" className="text-stone-600 hover:text-stone-900 transition-colors">Home</Link>
             <Link href="/learning-design" className="text-stone-600 hover:text-stone-900 transition-colors">Portfolio</Link>
+            <Link href="/explore" className="font-medium text-stone-900 hover:text-stone-600 transition-colors">Explore 3D</Link>
           </nav>
         </div>
       </header>
@@ -78,17 +99,20 @@ export default function HomePage() {
       <main className="max-w-5xl mx-auto px-4 py-12">
         <div className="space-y-8">
           {/* Introduction */}
-          <section className="space-y-6">
-            <div className="space-y-4">
-              <h1 className="text-6xl font-semibold text-stone-900 tracking-tight bg-gradient-to-r from-stone-900 to-stone-600 bg-clip-text text-transparent">
-                Hey, I'm Maheen
+          <section className="relative overflow-hidden rounded-2xl shadow-sm min-h-[560px]">
+            <div className="absolute inset-0">
+              <WaveHero />
+            </div>
+            <div className="relative z-10 space-y-4 px-8 pt-14 sm:px-12 sm:pt-20">
+              <h1 className="text-6xl font-semibold text-stone-900 tracking-tight">
+                Hi, I'm Maheen
               </h1>
-              <p className="text-xl text-stone-600 leading-relaxed max-w-3xl">
-                I build things at the intersection of code and learning. Currently a CS & Data Science student at NYU, 
-                but really I'm just someone who gets excited about making technology that helps people learn better—especially 
+              <p className="text-xl text-stone-700 leading-relaxed max-w-2xl">
+                I build things at the intersection of code and learning. Currently a CS & Data Science student at NYU,
+                but really I'm just someone who gets excited about making technology that helps people learn better—especially
                 those who tend to go quiet when they feel behind.
               </p>
-              <div className="flex flex-wrap gap-4 text-sm text-stone-500">
+              <div className="flex flex-wrap gap-4 text-sm text-stone-600">
                 <a href="mailto:mr6761@nyu.edu" className="hover:text-stone-900 hover:underline transition-colors">mr6761@nyu.edu</a>
                 <a href="https://mrassell.com" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 hover:underline transition-colors">mrassell.com</a>
                 <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 hover:underline transition-colors">GitHub</a>

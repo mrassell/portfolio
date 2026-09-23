@@ -1,0 +1,20 @@
+# dependencies
+/node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# vgpu example scratch (not integrated)
+/fft-ocean-surface
+
+# local env files
+.env*.local

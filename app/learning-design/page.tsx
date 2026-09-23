@@ -1,12 +1,19 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Learning Design & EdTech Portfolio - mrassell',
   description: 'Designing for students who disengage quietly: feedback loops, psychological safety, and practice environments that make revision feel normal.',
 };
 
+interface FigureProps {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 /* Figure Component */
-function Figure({ src, alt, caption }) {
+function Figure({ src, alt, caption }: FigureProps) {
   return (
     <figure className="my-6">
       <div className="relative overflow-hidden rounded-lg border border-stone-200 bg-stone-100 shadow-sm">
@@ -27,8 +34,13 @@ function Figure({ src, alt, caption }) {
   );
 }
 
+interface ImagePlaceholderProps {
+  label: string;
+  aspectRatio?: 'video' | 'square' | 'wide';
+}
+
 /* Image Placeholder */
-function ImagePlaceholder({ label, aspectRatio = "video" }) {
+function ImagePlaceholder({ label, aspectRatio = "video" }: ImagePlaceholderProps) {
   const aspectClass = {
     video: "aspect-video",
     square: "aspect-square",
