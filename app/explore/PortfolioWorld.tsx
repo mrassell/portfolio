@@ -417,7 +417,9 @@ function ResultOverlay({
           {won ? (
             <>
               <a
-                href="mailto:mr6761@nyu.edu"
+                href="https://mrassell.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full rounded-xl bg-stone-900 px-6 py-3 font-semibold text-white shadow-md transition-colors hover:bg-stone-800"
               >
                 Get in touch
