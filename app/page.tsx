@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
-import WaveHero from './components/WaveHero';
+import BasketballHero from './components/BasketballHero';
 
 interface AccordionSectionProps {
   title: string;
@@ -14,27 +14,29 @@ function AccordionSection({ title, children, defaultOpen = false }: AccordionSec
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div className="border border-stone-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300">
+    <div className="border-brutal rounded-2xl overflow-hidden bg-white shadow-brutal">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-stone-50 transition-colors group"
+        className="w-full px-6 py-5 flex items-center justify-between text-left bg-brutal-lavender hover:bg-brutal-purple transition-colors border-b-brutal"
       >
-        <h3 className="text-xl font-semibold text-stone-900">{title}</h3>
-        <svg
-          className={`w-5 h-5 text-stone-500 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+        <h3 className="text-2xl font-bold text-black">{title}</h3>
+        <div className={`w-10 h-10 flex items-center justify-center rounded-full bg-black transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <svg
+            className="w-6 h-6 text-white"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
       </button>
       <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="px-6 py-4 space-y-4">{children}</div>
+        <div className="px-6 py-6 space-y-4">{children}</div>
       </div>
     </div>
   );
@@ -50,18 +52,18 @@ interface ExperienceCardProps {
 
 function ExperienceCard({ title, company, date, location, children }: ExperienceCardProps) {
   return (
-    <div className="bg-gradient-to-br from-stone-50 to-white rounded-lg border border-stone-200 p-5 hover:border-stone-300 transition-all duration-200">
+    <div className="bg-brutal-yellow rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
       <div className="flex flex-wrap justify-between items-start gap-2 mb-3">
         <div>
-          <h4 className="text-lg font-semibold text-stone-900">{title}</h4>
-          <p className="text-stone-600 font-medium text-sm">{company}</p>
+          <h4 className="text-xl font-bold text-black">{title}</h4>
+          <p className="text-black font-semibold text-base mt-1">{company}</p>
         </div>
         <div className="text-right">
-          <span className="text-stone-500 text-xs">{date}</span>
-          {location && <p className="text-stone-400 text-xs mt-1">{location}</p>}
+          <span className="text-black text-sm font-medium">{date}</span>
+          {location && <p className="text-black/70 text-sm mt-1">{location}</p>}
         </div>
       </div>
-      <p className="text-stone-700 text-sm leading-relaxed">{children}</p>
+      <p className="text-black text-base leading-relaxed">{children}</p>
     </div>
   );
 }
@@ -73,24 +75,24 @@ interface ProjectCardProps {
 
 function ProjectCard({ title, children }: ProjectCardProps) {
   return (
-    <div className="bg-gradient-to-br from-stone-50 to-white rounded-lg border border-stone-200 p-5 hover:border-stone-300 hover:shadow-md transition-all duration-200">
-      <h4 className="text-lg font-semibold text-stone-900 mb-3">{title}</h4>
-      <p className="text-stone-700 text-sm leading-relaxed">{children}</p>
+    <div className="bg-brutal-lime rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
+      <h4 className="text-xl font-bold text-black mb-3">{title}</h4>
+      <p className="text-black text-base leading-relaxed">{children}</p>
     </div>
   );
 }
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-stone-50 via-white to-stone-50">
+    <div className="min-h-screen bg-brutal-lavender">
       {/* Header */}
-      <header className="border-b border-stone-200 bg-white/90 backdrop-blur-md sticky top-0 z-10 shadow-sm">
-        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-          <span className="font-semibold text-stone-900 text-lg">mrassell.com</span>
-          <nav className="flex gap-6 text-sm">
-            <Link href="/" className="text-stone-600 hover:text-stone-900 transition-colors">Home</Link>
-            <Link href="/learning-design" className="text-stone-600 hover:text-stone-900 transition-colors">Portfolio</Link>
-            <Link href="/explore" className="font-medium text-stone-900 hover:text-stone-600 transition-colors">Explore 3D</Link>
+      <header className="border-b-brutal bg-brutal-orange backdrop-blur-md sticky top-0 z-10">
+        <div className="max-w-5xl mx-auto px-4 py-5 flex items-center justify-between">
+          <span className="font-bold text-black text-2xl">mrassell.com</span>
+          <nav className="flex gap-6 text-base font-bold">
+            <Link href="/" className="text-black hover:underline hover:decoration-4 transition-all">Home</Link>
+            <Link href="/learning-design" className="text-black hover:underline hover:decoration-4 transition-all">Portfolio</Link>
+            <Link href="/explore" className="text-black hover:underline hover:decoration-4 transition-all">Explore 3D</Link>
           </nav>
         </div>
       </header>
@@ -99,24 +101,26 @@ export default function HomePage() {
       <main className="max-w-5xl mx-auto px-4 py-12">
         <div className="space-y-8">
           {/* Introduction */}
-          <section className="relative overflow-hidden rounded-2xl shadow-sm min-h-[560px]">
-            <div className="absolute inset-0">
-              <WaveHero />
-            </div>
-            <div className="relative z-10 space-y-4 px-8 pt-14 sm:px-12 sm:pt-20">
-              <h1 className="text-6xl font-semibold text-stone-900 tracking-tight">
-                Hi, I'm Maheen
-              </h1>
-              <p className="text-xl text-stone-700 leading-relaxed max-w-2xl">
-                I build things at the intersection of code and learning. Currently a CS & Data Science student at NYU,
-                but really I'm just someone who gets excited about making technology that helps people learn better—especially
-                those who tend to go quiet when they feel behind.
-              </p>
-              <div className="flex flex-wrap gap-4 text-sm text-stone-600">
-                <a href="mailto:mr6761@nyu.edu" className="hover:text-stone-900 hover:underline transition-colors">mr6761@nyu.edu</a>
-                <a href="https://mrassell.com" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 hover:underline transition-colors">mrassell.com</a>
-                <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 hover:underline transition-colors">GitHub</a>
-                <a href="https://www.linkedin.com/in/mrassell/" target="_blank" rel="noopener noreferrer" className="hover:text-stone-900 hover:underline transition-colors">LinkedIn</a>
+          <section className="relative overflow-hidden rounded-2xl border-brutal-thick shadow-brutal-xl bg-brutal-pink min-h-[560px] p-8 sm:p-12">
+            <div className="grid lg:grid-cols-2 gap-8 items-center h-full">
+              <div className="space-y-6 z-10">
+                <h1 className="text-6xl sm:text-7xl font-black text-black tracking-tight leading-none">
+                  Hi, I'm Maheen
+                </h1>
+                <p className="text-xl sm:text-2xl text-black leading-relaxed font-semibold">
+                  I build things at the intersection of code and learning. Currently a CS & Data Science student at NYU,
+                  but really I'm just someone who gets excited about making technology that helps people learn better—especially
+                  those who tend to go quiet when they feel behind.
+                </p>
+                <div className="flex flex-wrap gap-4 text-base font-bold text-black">
+                  <a href="mailto:mr6761@nyu.edu" className="hover:underline hover:decoration-4 transition-all">mr6761@nyu.edu</a>
+                  <a href="https://mrassell.com" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">mrassell.com</a>
+                  <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">GitHub</a>
+                  <a href="https://www.linkedin.com/in/mrassell/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">LinkedIn</a>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <BasketballHero />
               </div>
             </div>
           </section>
@@ -199,25 +203,25 @@ export default function HomePage() {
           {/* Leadership */}
           <AccordionSection title="Leading & Mentoring">
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-gradient-to-br from-stone-50 to-white rounded-lg border border-stone-200 p-5 hover:border-stone-300 transition-all duration-200">
-                <h4 className="text-lg font-semibold text-stone-900 mb-2">Head Developer</h4>
-                <p className="text-stone-600 font-medium text-sm mb-1">Google Developer Group</p>
-                <p className="text-stone-500 text-xs mb-3">Sep 2025 - Present</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
+              <div className="bg-brutal-blue rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
+                <h4 className="text-xl font-bold text-black mb-2">Head Developer</h4>
+                <p className="text-black font-semibold text-base mb-1">Google Developer Group</p>
+                <p className="text-black/70 text-sm mb-3">Sep 2025 - Present</p>
+                <p className="text-black text-base leading-relaxed">
                   Leading a team of 5 to build a React web application integrating custom ML pipelines to predict NFL outcomes. 
                   Selected among thousands of applicants to participate in this program focused on professional/leadership 
                   development at NYU.
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-stone-50 to-white rounded-lg border border-stone-200 p-5 hover:border-stone-300 transition-all duration-200">
-                <h4 className="text-lg font-semibold text-stone-900 mb-2">Mentor</h4>
-                <p className="text-stone-600 font-medium text-sm mb-1">Tech @ NYU</p>
-                <p className="text-stone-500 text-xs mb-3">Sep 2024 - May 2025</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
-                  Held office hours and assisted over <span className="font-semibold text-stone-900">30 students</span> on 
+              <div className="bg-brutal-purple rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
+                <h4 className="text-xl font-bold text-black mb-2">Mentor</h4>
+                <p className="text-black font-semibold text-base mb-1">Tech @ NYU</p>
+                <p className="text-black/70 text-sm mb-3">Sep 2024 - May 2025</p>
+                <p className="text-black text-base leading-relaxed">
+                  Held office hours and assisted over <span className="font-black text-black">30 students</span> on 
                   SWE fundamentals and version control during the week, and led networking workshops that 
-                  <span className="font-semibold text-stone-900"> boosted club engagement by 50%</span>.
+                  <span className="font-black text-black"> boosted club engagement by 50%</span>.
                 </p>
               </div>
             </div>
@@ -255,13 +259,13 @@ export default function HomePage() {
           {/* Hackathon Wins */}
           <AccordionSection title="Hackathon Wins" defaultOpen={true}>
             <div className="space-y-4">
-              <div className="bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-lg border-2 border-amber-200 p-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <h4 className="text-lg font-semibold text-stone-900">Realtime AI Debate Platform</h4>
-                  <span className="px-2 py-1 bg-amber-200 text-amber-900 text-xs font-semibold rounded-full">Winner</span>
+              <div className="bg-brutal-orange rounded-xl border-brutal-thick p-6 shadow-brutal-lg">
+                <div className="flex items-center gap-3 mb-3 flex-wrap">
+                  <h4 className="text-xl font-bold text-black">Realtime AI Debate Platform</h4>
+                  <span className="px-4 py-2 bg-black text-white text-sm font-black rounded-full border-brutal">🏆 WINNER</span>
                 </div>
-                <p className="text-stone-600 text-xs mb-3">Brown University Hackathon 2025</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
+                <p className="text-black font-bold text-sm mb-3">Brown University Hackathon 2025</p>
+                <p className="text-black text-base leading-relaxed">
                   Leveraged Vite to rapidly develop a web app facilitating student debates, integrating OpenAI's GPT API to 
                   analyze talking points, determine winners, and provide real-time feedback while streaming data via MongoDB. 
                   Orchestrated backend data handling by creating custom Express.js routes for live streams, ensuring seamless 
@@ -269,13 +273,13 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-lg border-2 border-blue-200 p-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <h4 className="text-lg font-semibold text-stone-900">Story Generation Web App</h4>
-                  <span className="px-2 py-1 bg-blue-200 text-blue-900 text-xs font-semibold rounded-full">Top 5</span>
+              <div className="bg-brutal-blue rounded-xl border-brutal-thick p-6 shadow-brutal-lg">
+                <div className="flex items-center gap-3 mb-3 flex-wrap">
+                  <h4 className="text-xl font-bold text-black">Story Generation Web App</h4>
+                  <span className="px-4 py-2 bg-black text-white text-sm font-black rounded-full border-brutal">⭐ TOP 5</span>
                 </div>
-                <p className="text-stone-600 text-xs mb-3">NVIDIA x Vercel Hackathon 2025</p>
-                <p className="text-stone-700 text-sm leading-relaxed">
+                <p className="text-black font-bold text-sm mb-3">NVIDIA x Vercel Hackathon 2025</p>
+                <p className="text-black text-base leading-relaxed">
                   Architected a Next.js 15 full-stack app using React 19 and Tailwind/Radix UI to generate personalized 
                   children's comics, integrating NVIDIA NIM vision-language models for image analysis and story generation. 
                   Built TypeScript API routes with custom image-validation middleware and orchestrated multi-step AI pipelines 
@@ -286,17 +290,17 @@ export default function HomePage() {
           </AccordionSection>
 
           {/* Learning Design Portfolio */}
-          <section className="bg-gradient-to-br from-stone-50 to-white rounded-xl border border-stone-200 p-8 shadow-sm hover:shadow-md transition-all duration-300">
-            <div className="space-y-4">
-              <h2 className="text-2xl font-semibold text-stone-900">Learning Design Work</h2>
-              <p className="text-stone-600 leading-relaxed">
+          <section className="bg-brutal-lime rounded-2xl border-brutal-thick p-8 shadow-brutal-xl">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-black text-black">Learning Design Work</h2>
+              <p className="text-black text-lg leading-relaxed font-semibold">
                 I also spend a lot of time thinking about how people learn—especially students who disengage quietly. 
                 My learning design portfolio explores feedback loops, psychological safety, and practice environments 
                 that make revision feel normal.
               </p>
               <Link 
                 href="/learning-design"
-                className="inline-block bg-stone-900 text-white px-6 py-3 rounded-lg font-medium hover:bg-stone-800 transition-colors shadow-sm hover:shadow-md"
+                className="inline-block bg-black text-white px-8 py-4 rounded-xl font-black text-lg hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200 border-brutal"
               >
                 View Learning Design Portfolio →
               </Link>
@@ -306,8 +310,8 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-stone-200 mt-20">
-        <div className="max-w-5xl mx-auto px-4 py-8 text-center text-sm text-stone-400">
+      <footer className="border-t-brutal mt-20 bg-black">
+        <div className="max-w-5xl mx-auto px-4 py-8 text-center text-lg font-bold text-white">
           © {new Date().getFullYear()} Maheen Rassell
         </div>
       </footer>
