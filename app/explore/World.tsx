@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect, useMemo, useRef, type MutableRefObject, type RefObject } from 'react';
+import { memo, useEffect, useMemo, useRef, useState, type MutableRefObject, type RefObject } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { Float, Instance, Instances, RoundedBox, Sky } from '@react-three/drei';
 import * as THREE from 'three';
@@ -507,8 +507,43 @@ function Station({ section, x, z, active, visited, fadeTargets }: StationProps) 
   );
   const platformStone = useDisposable(() => createStoneTexture(1.5), []);
   const signMaterial = useRef<THREE.MeshBasicMaterial>(null);
-  const frameMaterial = useRef<THREE.MeshStandardMaterial>(null);
+  const frameMaterial = useRef<THREE.MeshPhysicalMaterial>(null);
+  const edgeGlowMaterial = useRef<THREE.MeshStandardMaterial>(null);
+  
+  const fadeProgress = useRef(0);
+  const labelGroup = useRef<THREE.Group>(null!);
+  
+  const prefersReducedMotion = useMemo(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }, []);
+  
   useFadeTarget(fadeTargets, x, z, 2.4, [signMaterial, frameMaterial]);
+
+  useFrame((_, dt) => {
+    if (fadeProgress.current < 1) {
+      fadeProgress.current = Math.min(1, fadeProgress.current + dt * 1.5);
+      
+      const t = prefersReducedMotion 
+        ? fadeProgress.current 
+        : easeInOutCubic(fadeProgress.current);
+      
+      if (signMaterial.current) {
+        signMaterial.current.opacity = t;
+      }
+      if (frameMaterial.current) {
+        frameMaterial.current.opacity = 0.15 + t * 0.2;
+      }
+      if (edgeGlowMaterial.current) {
+        edgeGlowMaterial.current.opacity = t * 0.4;
+      }
+      
+      if (!prefersReducedMotion && labelGroup.current) {
+        labelGroup.current.position.y = 4.8 - (1 - t) * 0.3;
+        labelGroup.current.scale.setScalar(0.92 + t * 0.08);
+      }
+    }
+  });
 
   return (
     <group position={[x, 0, z]}>
@@ -538,14 +573,39 @@ function Station({ section, x, z, active, visited, fadeTargets }: StationProps) 
       </Float>
 
       <Float speed={1.2} rotationIntensity={0} floatIntensity={0.3} floatingRange={[-0.08, 0.08]}>
-        <group position-y={4.8}>
+        <group ref={labelGroup} position-y={4.8}>
           <mesh>
             <planeGeometry args={[4.4, 2.4]} />
-            <meshBasicMaterial ref={signMaterial} map={signTexture} transparent toneMapped={false} />
+            <meshBasicMaterial ref={signMaterial} map={signTexture} transparent toneMapped={false} opacity={0} />
           </mesh>
-          <mesh position-z={-0.07} castShadow>
+          <mesh position-z={-0.07} castShadow receiveShadow>
             <boxGeometry args={[4.62, 2.62, 0.1]} />
-            <meshStandardMaterial ref={frameMaterial} color={section.color} transparent roughness={0.6} />
+            <meshPhysicalMaterial
+              ref={frameMaterial}
+              color="#ffffff"
+              transparent
+              opacity={0.35}
+              transmission={0.6}
+              thickness={0.5}
+              roughness={0.1}
+              metalness={0}
+              clearcoat={0.1}
+              ior={1.45}
+              envMapIntensity={0.8}
+            />
+          </mesh>
+          <mesh position-z={-0.06} scale={[1.01, 1.01, 1]}>
+            <boxGeometry args={[4.62, 2.62, 0.05]} />
+            <meshStandardMaterial
+              ref={edgeGlowMaterial}
+              color={section.color}
+              emissive={section.color}
+              emissiveIntensity={0.3}
+              transparent
+              opacity={0}
+              side={THREE.FrontSide}
+              depthWrite={false}
+            />
           </mesh>
         </group>
       </Float>
