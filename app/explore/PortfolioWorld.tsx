@@ -77,14 +77,51 @@ function IntroOverlay({ onStart }: { onStart: () => void }) {
 }
 
 function SectionPanel({ section, onClose }: { section: Section; onClose?: () => void }) {
+  const [mounted, setMounted] = useState(false);
+  const [prefersReducedMotion] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const fadeStyle = prefersReducedMotion
+    ? {
+        opacity: mounted ? 1 : 0,
+        transition: 'opacity 0.3s ease-out',
+      }
+    : {
+        opacity: mounted ? 1 : 0,
+        transform: mounted ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.98)',
+        transition: 'opacity 0.4s ease-out, transform 0.4s ease-out',
+      };
+
   return (
-    <div className="pointer-events-auto relative flex max-h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white/95 shadow-2xl backdrop-blur">
-      <div className="h-1.5 shrink-0" style={{ backgroundColor: section.color }} />
+    <div
+      className="pointer-events-auto relative flex max-h-full flex-col overflow-hidden rounded-2xl shadow-2xl"
+      style={{
+        ...fadeStyle,
+        background: 'rgba(255, 255, 255, 0.25)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255, 255, 255, 0.4)',
+        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.5)',
+      }}
+    >
+      <div className="h-1.5 shrink-0" style={{ backgroundColor: section.color, opacity: 0.8 }} />
       {onClose && (
         <button
           onClick={onClose}
           aria-label="Close"
-          className="absolute right-3 top-4 flex h-8 w-8 items-center justify-center rounded-full bg-stone-100 text-stone-600 hover:bg-stone-200"
+          className="absolute right-3 top-4 flex h-8 w-8 items-center justify-center rounded-full text-stone-700 transition-colors hover:bg-white/40"
+          style={{
+            background: 'rgba(255, 255, 255, 0.3)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+          }}
         >
           ✕
         </button>
@@ -99,7 +136,15 @@ function SectionPanel({ section, onClose }: { section: Section; onClose?: () => 
         {section.items.length > 0 && (
           <div className="mt-4 space-y-3">
             {section.items.map((item) => (
-              <div key={`${item.heading}-${item.org ?? ''}`} className="rounded-xl border border-stone-200 bg-stone-50 p-4">
+              <div
+                key={`${item.heading}-${item.org ?? ''}`}
+                className="rounded-xl border border-white/40 p-4"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.4)',
+                  backdropFilter: 'blur(8px)',
+                  WebkitBackdropFilter: 'blur(8px)',
+                }}
+              >
                 <div className="flex flex-wrap items-center gap-2">
                   <h3 className="font-semibold text-stone-900">{item.heading}</h3>
                   {item.badge && (
@@ -128,7 +173,10 @@ function SectionPanel({ section, onClose }: { section: Section; onClose?: () => 
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-lg border border-stone-300 px-3 py-1.5 text-sm font-medium text-stone-700 transition-colors hover:bg-stone-100"
+                  className="rounded-lg border border-white/50 px-3 py-1.5 text-sm font-medium text-stone-700 transition-colors hover:bg-white/40"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.3)',
+                  }}
                 >
                   {link.label}
                 </a>
@@ -145,7 +193,10 @@ function SectionPanel({ section, onClose }: { section: Section; onClose?: () => 
                 <a
                   key={link.href}
                   href={link.href}
-                  className="rounded-lg border border-stone-300 px-3 py-1.5 text-sm font-medium text-stone-700 transition-colors hover:bg-stone-100"
+                  className="rounded-lg border border-white/50 px-3 py-1.5 text-sm font-medium text-stone-700 transition-colors hover:bg-white/40"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.3)',
+                  }}
                 >
                   {link.label}
                 </a>
@@ -584,13 +635,18 @@ export default function PortfolioWorld() {
           {activeSection && (
             <button
               onClick={() => setSheetOpen(true)}
-              className="pointer-events-auto min-w-0 flex-1 rounded-2xl border border-stone-200 bg-white/95 p-4 text-left shadow-xl md:hidden"
+              className="pointer-events-auto min-w-0 flex-1 rounded-2xl border border-white/50 p-4 text-left shadow-xl md:hidden"
+              style={{
+                background: 'rgba(255, 255, 255, 0.3)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+              }}
             >
               <p className="text-[11px] font-semibold uppercase tracking-widest" style={{ color: activeSection.color }}>
                 {activeSection.tagline}
               </p>
               <p className="truncate text-lg font-bold text-stone-900">{activeSection.title}</p>
-              <p className="text-sm font-medium text-stone-500">Tap to read →</p>
+              <p className="text-sm font-medium text-stone-600">Tap to read →</p>
             </button>
           )}
           <ActionButtons input={input} canFire={fightPhase === 'fighting'} />
