@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
-import BasketballHero from './components/BasketballHero';
+import BasketballGame from './components/BasketballGame';
 
 interface AccordionSectionProps {
   title: string;
@@ -120,7 +120,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <BasketballHero />
+                <BasketballGame />
               </div>
             </div>
           </section>
