@@ -84,7 +84,7 @@ export default function LearningDesignPage() {
 
           <div className="text-stone-700 leading-relaxed space-y-4">
             <p>
-              I am a Master's student in Learning Design, Innovation and Technology at Harvard, with a BA in Computer Science and Data Science from NYU. I think in learning cycles. Most of the work below was built around students who go quiet when they feel behind. Each project answers three questions:
+              I am a Harvard Master's student in Edtech who thinks in learning cycles. Most of the work below was built around students who go quiet when they feel behind. Each project answers three questions:
             </p>
             <ol className="list-decimal list-inside space-y-1 pl-2 text-stone-600">
               <li>Who was I designing for?</li>
