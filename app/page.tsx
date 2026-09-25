@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
-import BasketballGame from './components/BasketballGame';
 
 interface AccordionSectionProps {
   title: string;
@@ -102,11 +101,8 @@ export default function HomePage() {
         <div className="space-y-8">
           {/* Introduction */}
           <section className="relative overflow-hidden rounded-2xl border-brutal-thick shadow-brutal-xl bg-brutal-pink">
-            {/* Mobile layout: game on top */}
+            {/* Mobile layout */}
             <div className="lg:hidden">
-              <div className="flex items-center justify-center py-6 border-b-brutal">
-                <BasketballGame />
-              </div>
               <div className="p-6 space-y-4">
                 <h1 className="text-4xl font-black text-black tracking-tight leading-none">
                   Hi, I'm Maheen
@@ -122,9 +118,9 @@ export default function HomePage() {
               </div>
             </div>
             
-            {/* Desktop layout: side by side */}
-            <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-center min-h-[560px] p-12">
-              <div className="space-y-6 z-10">
+            {/* Desktop layout */}
+            <div className="hidden lg:block p-12">
+              <div className="space-y-6 max-w-3xl">
                 <h1 className="text-6xl sm:text-7xl font-black text-black tracking-tight leading-none">
                   Hi, I'm Maheen
                 </h1>
@@ -137,9 +133,6 @@ export default function HomePage() {
                   <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">GitHub</a>
                   <a href="https://www.linkedin.com/in/mrassell/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">LinkedIn</a>
                 </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <BasketballGame />
               </div>
             </div>
           </section>
