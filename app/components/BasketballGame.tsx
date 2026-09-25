@@ -115,7 +115,8 @@ export default function BasketballGame() {
       });
     }
 
-    animateConfetti();
+    // Start animation on next frame to ensure canvas is visible
+    requestAnimationFrame(() => animateConfetti());
   };
 
   const animateConfetti = () => {
@@ -335,16 +336,14 @@ export default function BasketballGame() {
           </g>
         </svg>
 
-        {/* Confetti Canvas - positioned above SVG */}
-        {showConfetti && (
-          <canvas
-            ref={confettiCanvas}
-            width={dimensions.width}
-            height={dimensions.height}
-            className="absolute inset-0 pointer-events-none"
-            style={{ zIndex: 10 }}
-          />
-        )}
+        {/* Confetti Canvas - always rendered, hidden when not active */}
+        <canvas
+          ref={confettiCanvas}
+          width={dimensions.width}
+          height={dimensions.height}
+          className="absolute inset-0 pointer-events-none"
+          style={{ zIndex: 10, display: showConfetti ? 'block' : 'none' }}
+        />
 
         {/* Score Display */}
         <div className="absolute top-2 left-2 md:top-4 md:left-4 bg-black text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-black text-base md:text-lg border-brutal" style={{ zIndex: 20 }}>
