@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
-import BasketballHero from './components/BasketballHero';
+import BasketballGame from './components/BasketballGame';
 
 interface AccordionSectionProps {
   title: string;
@@ -87,12 +87,12 @@ export default function HomePage() {
     <div className="min-h-screen bg-brutal-lavender">
       {/* Header */}
       <header className="border-b-brutal bg-brutal-orange backdrop-blur-md sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-4 py-5 flex items-center justify-between">
-          <span className="font-bold text-black text-2xl">mrassell.com</span>
-          <nav className="flex gap-6 text-base font-bold">
+        <div className="max-w-5xl mx-auto px-4 py-3 md:py-5 flex items-center justify-between">
+          <span className="font-bold text-black text-lg md:text-2xl">mrassell.com</span>
+          <nav className="flex gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm md:text-base font-bold">
             <Link href="/" className="text-black hover:underline hover:decoration-4 transition-all">Home</Link>
-            <Link href="/learning-design" className="text-black hover:underline hover:decoration-4 transition-all">Portfolio</Link>
-            <Link href="/explore" className="text-black hover:underline hover:decoration-4 transition-all">Explore 3D</Link>
+            <Link href="/learning-design" className="text-black hover:underline hover:decoration-4 transition-all whitespace-nowrap">Portfolio</Link>
+            <Link href="/explore" className="text-black hover:underline hover:decoration-4 transition-all whitespace-nowrap">Explore</Link>
           </nav>
         </div>
       </header>
@@ -120,7 +120,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <BasketballHero />
+                <BasketballGame />
               </div>
             </div>
           </section>
