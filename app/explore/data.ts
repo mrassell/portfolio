@@ -44,6 +44,24 @@ export const SECTIONS: Section[] = [
     color: '#3d5a80',
     items: [
       {
+        heading: 'Graduate Research Engineer',
+        org: 'Harvard Graduate School of Education',
+        meta: 'Present · Cambridge, MA',
+        body: 'Graduate research engineering at the Harvard Graduate School of Education.',
+      },
+      {
+        heading: 'Backend Developer',
+        org: 'Human Flourishing Program at Harvard',
+        meta: 'Present · Cambridge, MA',
+        body: 'Backend development for the Human Flourishing Program at Harvard.',
+      },
+      {
+        heading: 'Software Engineer (Part-time)',
+        org: 'Zencube',
+        meta: 'Present',
+        body: 'Software engineering on a physical mental health device.',
+      },
+      {
         heading: 'Data Engineering Intern',
         org: 'Lexor Strategies',
         meta: 'May 2025 – Aug 2025 · New York, NY',
@@ -130,6 +148,18 @@ export const SECTIONS: Section[] = [
     tagline: 'Leading & mentoring',
     color: '#7b5e8a',
     items: [
+      {
+        heading: 'Co-President',
+        org: 'HGSE Venture Capital & Entrepreneurship Club',
+        meta: 'Present',
+        body: "Starting the school's own student venture fund, and hosting founder and investor networking events for 80+ people.",
+      },
+      {
+        heading: 'Organization Director',
+        org: 'iCreate (Harvard)',
+        meta: 'Present',
+        body: 'Bringing influencers, celebrities, and speakers to give talks at Harvard.',
+      },
       {
         heading: 'Head Developer',
         org: 'Google Developer Group',

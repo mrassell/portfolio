@@ -150,6 +150,32 @@ export default function HomePage() {
           <AccordionSection title="Where I've Built" defaultOpen={true}>
             <div className="space-y-4">
               <ExperienceCard
+                title="Graduate Research Engineer"
+                company="Harvard Graduate School of Education"
+                date="Present"
+                location="Cambridge, MA"
+              >
+                Graduate research engineering at the Harvard Graduate School of Education.
+              </ExperienceCard>
+
+              <ExperienceCard
+                title="Backend Developer"
+                company="Human Flourishing Program at Harvard"
+                date="Present"
+                location="Cambridge, MA"
+              >
+                Backend development for the Human Flourishing Program at Harvard.
+              </ExperienceCard>
+
+              <ExperienceCard
+                title="Software Engineer (Part-time)"
+                company="Zencube"
+                date="Present"
+              >
+                Software engineering on a physical mental health device.
+              </ExperienceCard>
+
+              <ExperienceCard
                 title="Data Engineering Intern"
                 company="Lexor Strategies"
                 date="May 2025 - Aug 2025"
@@ -224,6 +250,25 @@ export default function HomePage() {
           {/* Leadership */}
           <AccordionSection title="Leading & Mentoring">
             <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-brutal-blue rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
+                <h4 className="text-xl font-bold text-black mb-2">Co-President</h4>
+                <p className="text-black font-semibold text-base mb-1">HGSE Venture Capital & Entrepreneurship Club</p>
+                <p className="text-black/70 text-sm mb-3">Present</p>
+                <p className="text-black text-base leading-relaxed">
+                  Starting the school's own student venture fund, and hosting founder and investor networking events for 
+                  <span className="font-black text-black"> 80+ people</span>.
+                </p>
+              </div>
+
+              <div className="bg-brutal-purple rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
+                <h4 className="text-xl font-bold text-black mb-2">Organization Director</h4>
+                <p className="text-black font-semibold text-base mb-1">iCreate (Harvard)</p>
+                <p className="text-black/70 text-sm mb-3">Present</p>
+                <p className="text-black text-base leading-relaxed">
+                  Bringing influencers, celebrities, and speakers to give talks at Harvard.
+                </p>
+              </div>
+
               <div className="bg-brutal-blue rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
                 <h4 className="text-xl font-bold text-black mb-2">Head Developer</h4>
                 <p className="text-black font-semibold text-base mb-1">Google Developer Group</p>
