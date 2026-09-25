@@ -112,7 +112,7 @@ export default function HomePage() {
                   Hi, I'm Maheen
                 </h1>
                 <p className="text-base text-black leading-relaxed font-semibold">
-                  I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard who gets excited about making technology that helps people learn better.
+                  I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard, with a BA in Computer Science and Data Science from NYU.
                 </p>
                 <div className="flex flex-wrap gap-3 text-xs font-bold text-black">
                   <a href="mailto:maheenrassell@gse.harvard.edu" className="hover:underline hover:decoration-4 transition-all">Email</a>
@@ -129,7 +129,7 @@ export default function HomePage() {
                   Hi, I'm Maheen
                 </h1>
                 <p className="text-xl sm:text-2xl text-black leading-relaxed font-semibold">
-                  I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard,
+                  I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard, with a BA in Computer Science and Data Science from NYU,
                   but really I'm just someone who gets excited about making technology that helps people learn better—especially
                   those who tend to go quiet when they feel behind.
                 </p>
