@@ -44,7 +44,6 @@ body {
     border-radius: 1.5rem;
     box-shadow: 8px 8px 16px rgba(163, 177, 198, 0.6), -8px -8px 16px rgba(255, 255, 255, 0.5);
     transition: all 0.3s ease;
-    opacity: 1 !important;
   }
 
   .neu-tile:hover {
@@ -85,6 +84,11 @@ body {
   .neu-scroll-tile::-webkit-scrollbar-thumb {
     background: #a3b1c6;
     border-radius: 3px;
+  }
+
+  html:not(.js) .neu-tile {
+    opacity: 1 !important;
+    transform: none !important;
   }
 
   @media (prefers-reduced-motion: reduce) {

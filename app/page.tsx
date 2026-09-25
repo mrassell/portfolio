@@ -80,12 +80,12 @@ interface ExperienceItemProps {
 function ExperienceItem({ title, company, date, location, children }: ExperienceItemProps) {
   return (
     <div className="p-4 mb-3 rounded-xl neu-inset-tile">
-      <div className="flex flex-wrap justify-between items-start gap-2 mb-2">
-        <div>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+        <div className="flex-1">
           <h4 className="text-base md:text-lg font-bold text-neu-text">{title}</h4>
           <p className="text-neu-text font-semibold text-sm md:text-base">{company}</p>
         </div>
-        <div className="text-right text-xs md:text-sm">
+        <div className="sm:text-right text-xs md:text-sm flex-shrink-0">
           <span className="text-neu-text-light font-medium">{date}</span>
           {location && <p className="text-neu-text-light/70 mt-0.5">{location}</p>}
         </div>
@@ -138,6 +138,8 @@ export default function HomePage() {
   const [bioVisible, setBioVisible] = useState(false);
 
   useEffect(() => {
+    document.documentElement.classList.add('js');
+    
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const timer = setTimeout(() => {
       setBioVisible(true);
