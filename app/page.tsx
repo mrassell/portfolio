@@ -101,8 +101,29 @@ export default function HomePage() {
       <main className="max-w-5xl mx-auto px-4 py-12">
         <div className="space-y-8">
           {/* Introduction */}
-          <section className="relative overflow-hidden rounded-2xl border-brutal-thick shadow-brutal-xl bg-brutal-pink min-h-[560px] p-8 sm:p-12">
-            <div className="grid lg:grid-cols-2 gap-8 items-center h-full">
+          <section className="relative overflow-hidden rounded-2xl border-brutal-thick shadow-brutal-xl bg-brutal-pink">
+            {/* Mobile layout: game on top */}
+            <div className="lg:hidden">
+              <div className="flex items-center justify-center py-6 border-b-brutal">
+                <BasketballGame />
+              </div>
+              <div className="p-6 space-y-4">
+                <h1 className="text-4xl font-black text-black tracking-tight leading-none">
+                  Hi, I'm Maheen
+                </h1>
+                <p className="text-base text-black leading-relaxed font-semibold">
+                  I build things at the intersection of code and learning. CS & Data Science student at NYU who gets excited about making technology that helps people learn better.
+                </p>
+                <div className="flex flex-wrap gap-3 text-xs font-bold text-black">
+                  <a href="mailto:mr6761@nyu.edu" className="hover:underline hover:decoration-4 transition-all">Email</a>
+                  <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">GitHub</a>
+                  <a href="https://www.linkedin.com/in/mrassell/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Desktop layout: side by side */}
+            <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-center min-h-[560px] p-12">
               <div className="space-y-6 z-10">
                 <h1 className="text-6xl sm:text-7xl font-black text-black tracking-tight leading-none">
                   Hi, I'm Maheen

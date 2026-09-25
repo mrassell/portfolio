@@ -244,7 +244,7 @@ export default function BasketballGame() {
     <div className="relative flex items-center justify-center h-full w-full">
       <div 
         ref={containerRef}
-        className="relative w-full max-w-[480px] h-[500px] max-h-[60vh] md:max-h-[500px] touch-none select-none"
+        className="relative w-full max-w-[340px] md:max-w-[600px] h-[380px] md:h-[580px] touch-none select-none"
         style={{ cursor: isDragging ? 'grabbing' : 'default' }}
       >
         <svg
@@ -335,24 +335,25 @@ export default function BasketballGame() {
           </g>
         </svg>
 
-        {/* Confetti Canvas */}
+        {/* Confetti Canvas - positioned above SVG */}
         {showConfetti && (
           <canvas
             ref={confettiCanvas}
             width={dimensions.width}
             height={dimensions.height}
             className="absolute inset-0 pointer-events-none"
+            style={{ zIndex: 10 }}
           />
         )}
 
         {/* Score Display */}
-        <div className="absolute top-2 left-2 md:top-4 md:left-4 bg-black text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-black text-base md:text-lg border-brutal">
+        <div className="absolute top-2 left-2 md:top-4 md:left-4 bg-black text-white px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-black text-base md:text-lg border-brutal" style={{ zIndex: 20 }}>
           Score: {score}
         </div>
 
         {/* Instructions */}
         {!isFlying && !isDragging && (
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-brutal-yellow px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-xs md:text-sm border-brutal shadow-brutal text-center max-w-[90%]">
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-brutal-yellow px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-bold text-xs md:text-sm border-brutal shadow-brutal text-center max-w-[90%]" style={{ zIndex: 20 }}>
             Drag & release to shoot! 🏀
           </div>
         )}
@@ -360,7 +361,7 @@ export default function BasketballGame() {
 
       {/* Reduced motion fallback */}
       {showConfetti && window.matchMedia('(prefers-reduced-motion: reduce)').matches && (
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 15 }}>
           <div className="text-4xl md:text-6xl font-black animate-pulse">🎉</div>
         </div>
       )}
