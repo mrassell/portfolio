@@ -29,7 +29,7 @@ export const SECTIONS: Section[] = [
     tagline: 'Code × learning',
     color: '#e07a5f',
     intro:
-      "I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard, but really I'm just someone who gets excited about making technology that helps people learn better—especially those who tend to go quiet when they feel behind.",
+      "Harvard Master's student in Edtech, who finished a BA in Computer Science + Data Science at NYU in 3 years. Winner of the Brown University Hackathon 2025 and Top 5 at the NVIDIA x Vercel Hackathon 2025. I love building agentic workflows and making technology that helps people learn better—especially those who tend to go quiet when they feel behind.",
     items: [],
     links: [
       { label: 'maheenrassell@gse.harvard.edu', href: 'mailto:maheenrassell@gse.harvard.edu' },
