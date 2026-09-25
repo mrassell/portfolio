@@ -29,10 +29,10 @@ export const SECTIONS: Section[] = [
     tagline: 'Code × learning',
     color: '#e07a5f',
     intro:
-      "I build things at the intersection of code and learning. Currently a CS & Data Science student at NYU, but really I'm just someone who gets excited about making technology that helps people learn better—especially those who tend to go quiet when they feel behind.",
+      "I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard, but really I'm just someone who gets excited about making technology that helps people learn better—especially those who tend to go quiet when they feel behind.",
     items: [],
     links: [
-      { label: 'mr6761@nyu.edu', href: 'mailto:mr6761@nyu.edu' },
+      { label: 'maheenrassell@gse.harvard.edu', href: 'mailto:maheenrassell@gse.harvard.edu' },
       { label: 'GitHub', href: 'https://github.com/mrassell', external: true },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mrassell/', external: true },
     ],
@@ -44,10 +44,10 @@ export const SECTIONS: Section[] = [
     color: '#3d5a80',
     items: [
       {
-        heading: 'Software Engineering Intern',
+        heading: 'Data Engineering Intern',
         org: 'Lexor Strategies',
         meta: 'May 2025 – Aug 2025 · New York, NY',
-        body: 'Built full-stack web apps with React, Tailwind CSS, and Supabase. Deployed automation pipelines that accelerated reporting turnaround by 100%, and LLM-powered internal tools that saved 20+ hours of team effort each week.',
+        body: 'Built end-to-end data pipelines using Supabase and SQL to automate client reporting workflows, cutting delivery time from ~2 days to same-day. Designed ETL automation scripts in Python that improved data processing speed by ~100% and eliminated 20+ hours/week of manual data work with LLM-powered automation tools.',
       },
       {
         heading: 'Teaching Assistant',
@@ -59,7 +59,7 @@ export const SECTIONS: Section[] = [
         heading: 'Fullstack Developer',
         org: 'Simply Friendly, Inc.',
         meta: 'Jan 2025 – Apr 2025 · New York, NY',
-        body: 'Built an AI-driven matchmaking platform on AWS Amplify (Next.js + React Native) analyzing 5,000+ interaction records, plus WebSocket chat for 100+ beta users.',
+        body: 'Increased relevance of student club recommendations by analyzing 5,000+ interaction records on an AI-driven matchmaking platform built with Next.js, React Native, and AWS Amplify. Implemented WebSocket chat for 100+ beta users, reliably supporting 30+ concurrent testers without downtime.',
       },
       {
         heading: 'Software Engineering Intern',
@@ -114,13 +114,13 @@ export const SECTIONS: Section[] = [
         heading: 'Realtime AI Debate Platform',
         badge: 'Winner',
         meta: 'Brown University Hackathon 2025',
-        body: 'Vite web app for student debates using GPT to analyze talking points, pick winners, and give live feedback, streaming via MongoDB and custom Express routes.',
+        body: 'Built a Vite-based AI debate platform that used OpenAI GPT to analyze arguments, select winners, and stream real-time feedback via MongoDB. Implemented custom Express.js routes to handle livestreams transcribing debates.',
       },
       {
         heading: 'Story Generation Web App',
         badge: 'Top 5',
         meta: 'NVIDIA × Vercel Hackathon 2025',
-        body: "Next.js 15 + React 19 app generating personalized children's comics with NVIDIA NIM vision-language models and multi-step Llama 3.3 pipelines.",
+        body: "Built a Next.js 15 story-generation app with React 19 and Tailwind UI to create personalized children's comics from user prompts. Orchestrated multi-step AI pipelines using NVIDIA NIM VLMs (Llama 3.3, Consistency NIM), with TypeScript APIs and image-validation middleware for robust error handling.",
       },
     ],
   },
@@ -134,13 +134,13 @@ export const SECTIONS: Section[] = [
         heading: 'Head Developer',
         org: 'Google Developer Group',
         meta: 'Sep 2025 – Present',
-        body: 'Leading a team of 5 building a React app with custom ML pipelines to predict NFL outcomes. Selected from thousands of NYU applicants.',
+        body: 'Leading a team of 5 to build an NFL outcome prediction app, engineering data pipelines to ingest and transform historical game stats via public APIs into BigQuery for downstream model training. Built Python ETL scripts to clean and aggregate player and team metrics across 10+ seasons, enabling feature engineering for an XGBoost classification model with real-time prediction output.',
       },
       {
         heading: 'Mentor',
         org: 'Tech @ NYU',
         meta: 'Sep 2024 – May 2025',
-        body: 'Held office hours for 30+ students on SWE fundamentals and version control, and led networking workshops that boosted club engagement by 50%.',
+        body: 'Mentored 30+ students on SWE fundamentals and Git workflows through weekly office hours, increasing attendance by ~50% over the academic year. Led an introductory SQL workshop covering query writing, data filtering, and aggregation fundamentals for students with no prior database experience.',
       },
     ],
   },

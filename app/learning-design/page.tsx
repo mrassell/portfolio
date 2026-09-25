@@ -84,7 +84,7 @@ export default function LearningDesignPage() {
 
           <div className="text-stone-700 leading-relaxed space-y-4">
             <p>
-              I am an undergraduate Computer Science and Data Science student who thinks in learning cycles. Most of the work below was built around students who go quiet when they feel behind. Each project answers three questions:
+              I am a Master's student in Learning Design, Innovation and Technology at Harvard who thinks in learning cycles. Most of the work below was built around students who go quiet when they feel behind. Each project answers three questions:
             </p>
             <ol className="list-decimal list-inside space-y-1 pl-2 text-stone-600">
               <li>Who was I designing for?</li>
@@ -492,7 +492,7 @@ export default function LearningDesignPage() {
         {/* Footer */}
         <footer className="pt-8 pb-4 text-center">
           <p className="text-sm text-stone-400">
-            © {new Date().getFullYear()} Maheen Rassell · <a href="mailto:mr6761@nyu.edu" className="hover:text-stone-600 underline">mr6761@nyu.edu</a>
+            © {new Date().getFullYear()} Maheen Rassell · <a href="mailto:maheenrassell@gse.harvard.edu" className="hover:text-stone-600 underline">maheenrassell@gse.harvard.edu</a>
           </p>
         </footer>
       </main>
