@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
-import BasketballHero from './components/BasketballHero';
+import BasketballGame from './components/BasketballGame';
 
 interface AccordionSectionProps {
   title: string;
@@ -87,12 +87,12 @@ export default function HomePage() {
     <div className="min-h-screen bg-brutal-lavender">
       {/* Header */}
       <header className="border-b-brutal bg-brutal-orange backdrop-blur-md sticky top-0 z-10">
-        <div className="max-w-5xl mx-auto px-4 py-5 flex items-center justify-between">
-          <span className="font-bold text-black text-2xl">mrassell.com</span>
-          <nav className="flex gap-6 text-base font-bold">
+        <div className="max-w-5xl mx-auto px-4 py-3 md:py-5 flex items-center justify-between">
+          <span className="font-bold text-black text-lg md:text-2xl">mrassell.com</span>
+          <nav className="flex gap-2 sm:gap-4 md:gap-6 text-xs sm:text-sm md:text-base font-bold">
             <Link href="/" className="text-black hover:underline hover:decoration-4 transition-all">Home</Link>
-            <Link href="/learning-design" className="text-black hover:underline hover:decoration-4 transition-all">Portfolio</Link>
-            <Link href="/explore" className="text-black hover:underline hover:decoration-4 transition-all">Explore 3D</Link>
+            <Link href="/learning-design" className="text-black hover:underline hover:decoration-4 transition-all whitespace-nowrap">Portfolio</Link>
+            <Link href="/explore" className="text-black hover:underline hover:decoration-4 transition-all whitespace-nowrap">Explore</Link>
           </nav>
         </div>
       </header>
@@ -101,8 +101,29 @@ export default function HomePage() {
       <main className="max-w-5xl mx-auto px-4 py-12">
         <div className="space-y-8">
           {/* Introduction */}
-          <section className="relative overflow-hidden rounded-2xl border-brutal-thick shadow-brutal-xl bg-brutal-pink min-h-[560px] p-8 sm:p-12">
-            <div className="grid lg:grid-cols-2 gap-8 items-center h-full">
+          <section className="relative overflow-hidden rounded-2xl border-brutal-thick shadow-brutal-xl bg-brutal-pink">
+            {/* Mobile layout: game on top */}
+            <div className="lg:hidden">
+              <div className="flex items-center justify-center py-6 border-b-brutal">
+                <BasketballGame />
+              </div>
+              <div className="p-6 space-y-4">
+                <h1 className="text-4xl font-black text-black tracking-tight leading-none">
+                  Hi, I'm Maheen
+                </h1>
+                <p className="text-base text-black leading-relaxed font-semibold">
+                  I build things at the intersection of code and learning. CS & Data Science student at NYU who gets excited about making technology that helps people learn better.
+                </p>
+                <div className="flex flex-wrap gap-3 text-xs font-bold text-black">
+                  <a href="mailto:mr6761@nyu.edu" className="hover:underline hover:decoration-4 transition-all">Email</a>
+                  <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">GitHub</a>
+                  <a href="https://www.linkedin.com/in/mrassell/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">LinkedIn</a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Desktop layout: side by side */}
+            <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-center min-h-[560px] p-12">
               <div className="space-y-6 z-10">
                 <h1 className="text-6xl sm:text-7xl font-black text-black tracking-tight leading-none">
                   Hi, I'm Maheen
@@ -120,7 +141,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-center justify-center">
-                <BasketballHero />
+                <BasketballGame />
               </div>
             </div>
           </section>
