@@ -112,10 +112,10 @@ export default function HomePage() {
                   Hi, I'm Maheen
                 </h1>
                 <p className="text-base text-black leading-relaxed font-semibold">
-                  I build things at the intersection of code and learning. CS & Data Science student at NYU who gets excited about making technology that helps people learn better.
+                  I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard who gets excited about making technology that helps people learn better.
                 </p>
                 <div className="flex flex-wrap gap-3 text-xs font-bold text-black">
-                  <a href="mailto:mr6761@nyu.edu" className="hover:underline hover:decoration-4 transition-all">Email</a>
+                  <a href="mailto:maheenrassell@gse.harvard.edu" className="hover:underline hover:decoration-4 transition-all">Email</a>
                   <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">GitHub</a>
                   <a href="https://www.linkedin.com/in/mrassell/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">LinkedIn</a>
                 </div>
@@ -129,12 +129,12 @@ export default function HomePage() {
                   Hi, I'm Maheen
                 </h1>
                 <p className="text-xl sm:text-2xl text-black leading-relaxed font-semibold">
-                  I build things at the intersection of code and learning. Currently a CS & Data Science student at NYU,
+                  I build things at the intersection of code and learning. Master's student in Learning Design, Innovation and Technology at Harvard,
                   but really I'm just someone who gets excited about making technology that helps people learn better—especially
                   those who tend to go quiet when they feel behind.
                 </p>
                 <div className="flex flex-wrap gap-4 text-base font-bold text-black">
-                  <a href="mailto:mr6761@nyu.edu" className="hover:underline hover:decoration-4 transition-all">mr6761@nyu.edu</a>
+                  <a href="mailto:maheenrassell@gse.harvard.edu" className="hover:underline hover:decoration-4 transition-all">maheenrassell@gse.harvard.edu</a>
                   <a href="https://mrassell.com" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">mrassell.com</a>
                   <a href="https://github.com/mrassell" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">GitHub</a>
                   <a href="https://www.linkedin.com/in/mrassell/" target="_blank" rel="noopener noreferrer" className="hover:underline hover:decoration-4 transition-all">LinkedIn</a>
@@ -150,17 +150,43 @@ export default function HomePage() {
           <AccordionSection title="Where I've Built" defaultOpen={true}>
             <div className="space-y-4">
               <ExperienceCard
-                title="Software Engineering Intern"
+                title="Graduate Research Engineer"
+                company="Harvard Graduate School of Education"
+                date="Present"
+                location="Cambridge, MA"
+              >
+                Graduate research engineering at the Harvard Graduate School of Education.
+              </ExperienceCard>
+
+              <ExperienceCard
+                title="Backend Developer"
+                company="Human Flourishing Program at Harvard"
+                date="Present"
+                location="Cambridge, MA"
+              >
+                Backend development for the Human Flourishing Program at Harvard.
+              </ExperienceCard>
+
+              <ExperienceCard
+                title="Software Engineer (Part-time)"
+                company="Zencube"
+                date="Present"
+              >
+                Software engineering on a physical mental health device.
+              </ExperienceCard>
+
+              <ExperienceCard
+                title="Data Engineering Intern"
                 company="Lexor Strategies"
                 date="May 2025 - Aug 2025"
                 location="New York, NY"
               >
-                Built full-stack web applications to optimize client workflows using React, Tailwind CSS, and Supabase. 
-                Led real-estate and marketing client consultations, scoping system architectures and deploying automation 
-                pipelines that <span className="font-semibold text-stone-900">accelerated reporting turnaround by 100%</span>. 
-                Designed internal tools and automation workflows using custom LLM integrations that 
-                <span className="font-semibold text-stone-900"> saved over 20 hours of team effort each week</span>, 
-                saving significant engineering hire costs.
+                Built end-to-end data pipelines using Supabase and SQL to automate client reporting workflows for real-estate 
+                and marketing teams, cutting delivery time from ~2 days to same-day. 
+                Designed and deployed ETL automation scripts in Python that <span className="font-semibold text-stone-900">improved 
+                data processing speed by ~100%</span> and reduced manual errors in deliverables. 
+                Eliminated <span className="font-semibold text-stone-900">20+ hours/week of manual data work</span> by engineering 
+                LLM-powered automation tools (Claude Cowork) to handle repetitive data extraction and formatting tasks.
               </ExperienceCard>
 
               <ExperienceCard
@@ -181,10 +207,10 @@ export default function HomePage() {
                 date="Jan 2025 - Apr 2025"
                 location="New York, NY"
               >
-                Developed an AI-driven matchmaking platform on AWS Amplify in Next.js and React Native that analyzed 
-                <span className="font-semibold text-stone-900"> 5,000+ interaction records</span> to provide more relevant 
-                club recommendations for students. Implemented WebSocket-based chat for over 100 beta users, enabling 
-                real-time messaging for 30 concurrent testers and improving engagement in student organizations.
+                Increased relevance of student club recommendations by analyzing <span className="font-semibold text-stone-900">5,000+ 
+                interaction records</span> on an AI-driven matchmaking platform built with Next.js, React Native, and AWS Amplify. 
+                Boosted real-time engagement across student organizations by implementing WebSocket chat for 100+ beta users, 
+                reliably supporting <span className="font-semibold text-stone-900">30+ concurrent testers</span> without downtime.
               </ExperienceCard>
 
               <ExperienceCard
@@ -225,13 +251,33 @@ export default function HomePage() {
           <AccordionSection title="Leading & Mentoring">
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-brutal-blue rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
+                <h4 className="text-xl font-bold text-black mb-2">Co-President</h4>
+                <p className="text-black font-semibold text-base mb-1">HGSE Venture Capital & Entrepreneurship Club</p>
+                <p className="text-black/70 text-sm mb-3">Present</p>
+                <p className="text-black text-base leading-relaxed">
+                  Starting the school's own student venture fund, and hosting founder and investor networking events for 
+                  <span className="font-black text-black"> 80+ people</span>.
+                </p>
+              </div>
+
+              <div className="bg-brutal-purple rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
+                <h4 className="text-xl font-bold text-black mb-2">Organization Director</h4>
+                <p className="text-black font-semibold text-base mb-1">iCreate (Harvard)</p>
+                <p className="text-black/70 text-sm mb-3">Present</p>
+                <p className="text-black text-base leading-relaxed">
+                  Bringing influencers, celebrities, and speakers to give talks at Harvard.
+                </p>
+              </div>
+
+              <div className="bg-brutal-blue rounded-xl border-brutal p-6 hover:translate-x-1 hover:translate-y-1 hover:shadow-none shadow-brutal transition-all duration-200">
                 <h4 className="text-xl font-bold text-black mb-2">Head Developer</h4>
                 <p className="text-black font-semibold text-base mb-1">Google Developer Group</p>
                 <p className="text-black/70 text-sm mb-3">Sep 2025 - Present</p>
                 <p className="text-black text-base leading-relaxed">
-                  Leading a team of 5 to build a React web application integrating custom ML pipelines to predict NFL outcomes. 
-                  Selected among thousands of applicants to participate in this program focused on professional/leadership 
-                  development at NYU.
+                  Leading a team of 5 to build an NFL outcome prediction app, engineering data pipelines to ingest and transform 
+                  historical game stats via public APIs into BigQuery for downstream model training. Built Python ETL scripts to 
+                  clean and aggregate player and team metrics across <span className="font-black text-black">10+ seasons</span>, 
+                  enabling feature engineering for an XGBoost classification model with real-time prediction output.
                 </p>
               </div>
 
@@ -240,9 +286,10 @@ export default function HomePage() {
                 <p className="text-black font-semibold text-base mb-1">Tech @ NYU</p>
                 <p className="text-black/70 text-sm mb-3">Sep 2024 - May 2025</p>
                 <p className="text-black text-base leading-relaxed">
-                  Held office hours and assisted over <span className="font-black text-black">30 students</span> on 
-                  SWE fundamentals and version control during the week, and led networking workshops that 
-                  <span className="font-black text-black"> boosted club engagement by 50%</span>.
+                  Mentored <span className="font-black text-black">30+ students</span> on SWE fundamentals and Git workflows 
+                  through weekly office hours, increasing attendance by <span className="font-black text-black">~50%</span> over 
+                  the academic year. Led an introductory SQL workshop covering query writing, data filtering, and aggregation 
+                  fundamentals for students with no prior database experience.
                 </p>
               </div>
             </div>
@@ -287,10 +334,8 @@ export default function HomePage() {
                 </div>
                 <p className="text-black font-bold text-sm mb-3">Brown University Hackathon 2025</p>
                 <p className="text-black text-base leading-relaxed">
-                  Leveraged Vite to rapidly develop a web app facilitating student debates, integrating OpenAI's GPT API to 
-                  analyze talking points, determine winners, and provide real-time feedback while streaming data via MongoDB. 
-                  Orchestrated backend data handling by creating custom Express.js routes for live streams, ensuring seamless 
-                  server–client communication, and driving effective team collaboration.
+                  Built a Vite-based AI debate platform that used OpenAI GPT to analyze arguments, select winners, and stream 
+                  real-time feedback via MongoDB. Implemented custom Express.js routes to handle livestreams transcribing debates.
                 </p>
               </div>
 
@@ -301,10 +346,9 @@ export default function HomePage() {
                 </div>
                 <p className="text-black font-bold text-sm mb-3">NVIDIA x Vercel Hackathon 2025</p>
                 <p className="text-black text-base leading-relaxed">
-                  Architected a Next.js 15 full-stack app using React 19 and Tailwind/Radix UI to generate personalized 
-                  children's comics, integrating NVIDIA NIM vision-language models for image analysis and story generation. 
-                  Built TypeScript API routes with custom image-validation middleware and orchestrated multi-step AI pipelines 
-                  using NVIDIA Llama 3.3 and Consistency NIM models with robust error handling.
+                  Built a Next.js 15 story-generation app with React 19 and Tailwind UI to create personalized children's comics 
+                  from user prompts. Orchestrated multi-step AI pipelines using NVIDIA NIM VLMs (Llama 3.3, Consistency NIM), 
+                  with TypeScript APIs and image-validation middleware for robust error handling.
                 </p>
               </div>
             </div>
