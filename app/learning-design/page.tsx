@@ -84,7 +84,7 @@ export default function LearningDesignPage() {
 
           <div className="text-stone-700 leading-relaxed space-y-4">
             <p>
-              I am a Harvard Master's student in Edtech who thinks in learning cycles. Most of the work below was built around students who go quiet when they feel behind. Each project answers three questions:
+              I am a Harvard Master's student in Edtech, who finished a BA in Computer Science + Data Science at NYU in 3 years. Winner of the Brown University Hackathon 2025 and Top 5 at the NVIDIA x Vercel Hackathon 2025. I love building agentic workflows and making technology that helps people learn better—especially those who tend to go quiet when they feel behind. Most of the work below was built around students who go quiet when they feel behind. Each project answers three questions:
             </p>
             <ol className="list-decimal list-inside space-y-1 pl-2 text-stone-600">
               <li>Who was I designing for?</li>

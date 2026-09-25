@@ -112,7 +112,7 @@ export default function HomePage() {
                   Hi, I'm Maheen
                 </h1>
                 <p className="text-base text-black leading-relaxed font-semibold">
-                  I build things at the intersection of code and learning. Harvard Master's student in Edtech.
+                  Harvard Master's student in Edtech, who finished a BA in Computer Science + Data Science at NYU in 3 years. Winner of the Brown University Hackathon 2025 and Top 5 at the NVIDIA x Vercel Hackathon 2025. I love building agentic workflows and making technology that helps people learn better—especially those who tend to go quiet when they feel behind.
                 </p>
                 <div className="flex flex-wrap gap-3 text-xs font-bold text-black">
                   <a href="mailto:maheenrassell@gse.harvard.edu" className="hover:underline hover:decoration-4 transition-all">Email</a>
@@ -129,9 +129,7 @@ export default function HomePage() {
                   Hi, I'm Maheen
                 </h1>
                 <p className="text-xl sm:text-2xl text-black leading-relaxed font-semibold">
-                  I build things at the intersection of code and learning. Harvard Master's student in Edtech,
-                  but really I'm just someone who gets excited about making technology that helps people learn better—especially
-                  those who tend to go quiet when they feel behind.
+                  Harvard Master's student in Edtech, who finished a BA in Computer Science + Data Science at NYU in 3 years. Winner of the Brown University Hackathon 2025 and Top 5 at the NVIDIA x Vercel Hackathon 2025. I love building agentic workflows and making technology that helps people learn better—especially those who tend to go quiet when they feel behind.
                 </p>
                 <div className="flex flex-wrap gap-4 text-base font-bold text-black">
                   <a href="mailto:maheenrassell@gse.harvard.edu" className="hover:underline hover:decoration-4 transition-all">maheenrassell@gse.harvard.edu</a>
