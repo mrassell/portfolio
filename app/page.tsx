@@ -5,20 +5,36 @@ import type { ReactNode } from 'react';
 import { MotionConfig, motion } from 'motion/react';
 import DancingLetters from '@/components/ui/dancing-letters';
 import ExperienceIndex from '@/app/components/ExperienceIndex';
+import SiteHeader from '@/app/components/SiteHeader';
+import SiteFooter from '@/app/components/SiteFooter';
 import { entries, projects } from '@/app/data/experience';
+import { hackathons } from '@/app/data/hackathons';
+import { contactLinks as links, socialLinks } from '@/app/data/links';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-const facts: { lead: ReactNode; detail: string }[] = [
+const facts: { lead: ReactNode; detail: ReactNode }[] = [
   { lead: <span className="text-crimson">Harvard grad student</span>, detail: 'in EdTech' },
   { lead: <span className="text-nyu-violet">NYU CS + Data Science</span>, detail: 'finished in 3 years' },
-  { lead: <>Content creator, <span className="text-accent">1M+</span></>, detail: 'impressions and counting' },
-];
-
-const links = [
-  { label: 'Email', href: 'mailto:maheenrassell@gse.harvard.edu' },
-  { label: 'GitHub', href: 'https://github.com/mrassell' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/mrassell/' },
+  { lead: <>Content creator, <span className="text-accent">1M+</span></>, detail: (
+      <>
+        impressions on{' '}
+        {[socialLinks.youtube, socialLinks.tiktok].map((s, i) => (
+          <span key={s.label}>
+            {i > 0 && ' and '}
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-ink underline decoration-stone-300 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+            >
+              {s.label}
+            </a>
+          </span>
+        ))}
+      </>
+    ),
+  },
 ];
 
 // Unique orgs, in index order, for the ticker
@@ -46,32 +62,7 @@ export default function HomePage() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen bg-paper text-ink selection:bg-accent selection:text-paper">
-        {/* Header */}
-        <header className="sticky top-0 z-50 border-b border-stone-300/70 bg-paper/85 backdrop-blur-md">
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 sm:px-6 lg:px-8">
-            <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-              <span className="h-2.5 w-2.5 bg-accent" aria-hidden />
-              Maheen Rassell
-            </Link>
-            <nav className="flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[13px] text-stone-500 sm:gap-x-5 sm:text-sm md:gap-x-7">
-              <a href="#experience" className="hidden transition-colors hover:text-ink lg:inline">Experience</a>
-              <Link href="/learning-design" className="transition-colors hover:text-ink">Learning Design</Link>
-              <Link href="/explore" className="transition-colors hover:text-ink">Explore</Link>
-              <span className="hidden h-4 w-px bg-stone-300 sm:block" aria-hidden />
-              {links.map((l) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  target={l.href.startsWith('http') ? '_blank' : undefined}
-                  rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="font-medium text-ink transition-colors hover:text-accent"
-                >
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        </header>
+        <SiteHeader />
 
         <main>
           {/* Hero */}
@@ -104,7 +95,7 @@ export default function HomePage() {
                   <p className="mt-3 text-2xl font-semibold leading-tight tracking-tight md:text-[1.65rem]">
                     {fact.lead}
                   </p>
-                  <p className="mt-1 text-stone-500">{fact.detail}</p>
+                  <div className="mt-1 text-stone-500">{fact.detail}</div>
                 </motion.li>
               ))}
             </ol>
@@ -122,8 +113,8 @@ export default function HomePage() {
                   go quiet when they feel behind. Right now I&apos;m a research engineer at Harvard&apos;s Graduate
                   School of Education, a backend developer for the Human Flourishing Program, and a software engineer
                   on Zencube&apos;s mental health device. Along the way:{' '}
-                  <span className="text-ink">1st at Brown&apos;s 2025 hackathon</span> and{' '}
-                  <span className="text-ink">top 5 at NVIDIA x Vercel</span>.
+                  <span className="text-ink">five hackathon awards</span>, from Hack@Brown to Tech@NYU&apos;s
+                  Startup Week, plus a <span className="text-ink">top 5 at NVIDIA x Vercel</span>.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium">
                   {links.map((l) => (
@@ -163,23 +154,57 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Experience & leadership */}
-          <section id="experience" className="mx-auto max-w-7xl scroll-mt-20 px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+          {/* Projects */}
+          <section id="projects" className="mx-auto max-w-7xl scroll-mt-20 px-4 py-20 sm:px-6 md:py-28 lg:px-8">
             <SectionHeading
               index="01"
-              title="Experience & leadership"
+              title="Projects"
               aside={
-                <p className="max-w-xs text-sm text-stone-500">
-                  Every role, club and hackathon. Filter, then hover a row (or tap it) for the details.
-                </p>
+                <Link href="/projects" className="group inline-flex items-center gap-1.5 text-sm font-medium">
+                  <span className="border-b border-ink/30 pb-0.5 transition-colors group-hover:border-accent group-hover:text-accent">
+                    Full write-ups
+                  </span>
+                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                </Link>
               }
             />
-            <ExperienceIndex />
-          </section>
+            <p className="mb-6 text-sm text-stone-400">Hackathons</p>
+            <ul className="border-t border-ink">
+              {hackathons.map((h, i) => (
+                <motion.li
+                  key={h.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.5, ease, delay: i * 0.05 }}
+                  className="border-b border-stone-300"
+                >
+                  <Link
+                    href={`/projects#${h.id}`}
+                    className="group grid gap-x-6 gap-y-2 py-6 md:grid-cols-[11rem_minmax(0,1fr)_auto] md:items-baseline md:py-7"
+                  >
+                    <span className="text-sm font-semibold text-accent">{h.awardShort}</span>
+                    <span className="min-w-0">
+                      <span className="block text-2xl font-semibold tracking-tight transition-transform duration-300 group-hover:translate-x-1 md:text-3xl">
+                        {h.name}
+                      </span>
+                      <span className="mt-2 block max-w-2xl leading-relaxed text-stone-600">{h.tagline}</span>
+                    </span>
+                    <span className="flex items-center gap-3 text-sm text-stone-500 md:justify-end md:text-right">
+                      <span>
+                        {h.event}
+                        <span className="block text-stone-400">{h.award}</span>
+                      </span>
+                      <span aria-hidden className="hidden text-lg text-ink transition-transform duration-300 group-hover:translate-x-1 md:inline">
+                        →
+                      </span>
+                    </span>
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
 
-          {/* Projects */}
-          <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 md:pb-28 lg:px-8">
-            <SectionHeading index="02" title="Side projects" />
+            <p className="mb-6 mt-16 text-sm text-stone-400">Also built</p>
             <ul className="grid border-t border-ink md:grid-cols-2">
               {projects.map((p, i) => (
                 <motion.li
@@ -188,18 +213,30 @@ export default function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.5, ease, delay: (i % 2) * 0.08 }}
-                  className="group border-b border-stone-300 py-7 md:odd:border-r md:odd:pr-10 md:even:pl-10"
+                  className="border-b border-stone-300 py-7 md:odd:border-r md:odd:pr-10 md:even:pl-10"
                 >
                   <div className="mb-3 flex items-baseline justify-between gap-4">
-                    <h3 className="text-2xl font-semibold tracking-tight transition-colors group-hover:text-accent">
-                      {p.name}
-                    </h3>
+                    <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
                     <span className="text-xs font-medium uppercase tracking-wider text-stone-400">{p.kind}</span>
                   </div>
                   <p className="leading-relaxed text-stone-600">{p.summary}</p>
                 </motion.li>
               ))}
             </ul>
+          </section>
+
+          {/* Experience & leadership */}
+          <section id="experience" className="mx-auto max-w-7xl scroll-mt-20 px-4 pb-20 sm:px-6 md:pb-28 lg:px-8">
+            <SectionHeading
+              index="02"
+              title="Experience & leadership"
+              aside={
+                <p className="max-w-xs text-sm text-stone-500">
+                  Every role, club and hackathon. Filter, then hover a row (or tap it) for the details.
+                </p>
+              }
+            />
+            <ExperienceIndex />
           </section>
 
           {/* Learning design */}
@@ -231,28 +268,7 @@ export default function HomePage() {
           </section>
         </main>
 
-        {/* Footer */}
-        <footer className="border-t border-stone-300">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-            <p className="text-sm text-stone-400">Say hello</p>
-            <a
-              href="mailto:maheenrassell@gse.harvard.edu"
-              className="mt-3 inline-block break-all text-2xl font-semibold tracking-tight transition-colors hover:text-accent sm:text-4xl md:text-5xl"
-            >
-              maheenrassell@gse.harvard.edu
-            </a>
-            <div className="mt-12 flex flex-wrap items-center justify-between gap-4 text-sm text-stone-500">
-              <div className="flex gap-6">
-                {links.slice(1).map((l) => (
-                  <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
-                    {l.label}
-                  </a>
-                ))}
-              </div>
-              <span>© {new Date().getFullYear()} Maheen Rassell</span>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </div>
     </MotionConfig>
   );

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { cn } from '@/lib/utils';
@@ -33,6 +34,12 @@ function Details({ entry }: { entry: Entry }) {
         </div>
       )}
       <p className="text-base leading-relaxed text-stone-700">{entry.summary}</p>
+      {entry.href && (
+        <Link href={entry.href} className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent">
+          <span className="border-b border-ink/30 pb-0.5">Read the full write-up</span>
+          <span aria-hidden>→</span>
+        </Link>
+      )}
       {entry.stack && (
         <ul className="flex flex-wrap gap-2">
           {entry.stack.map((tool) => (

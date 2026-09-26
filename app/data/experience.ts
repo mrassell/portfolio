@@ -1,3 +1,5 @@
+import { hackathons } from './hackathons';
+
 export type Category = 'work' | 'leadership' | 'hackathon';
 
 export interface Entry {
@@ -13,6 +15,8 @@ export interface Entry {
   stat?: { value: string; label: string };
   summary: string;
   stack?: string[];
+  /** Optional deep link, e.g. a project write-up. */
+  href?: string;
 }
 
 export const categoryLabels: Record<Category, string> = {
@@ -21,7 +25,20 @@ export const categoryLabels: Record<Category, string> = {
   hackathon: 'Hackathon',
 };
 
-export const entries: Entry[] = [
+const hackathonEntries: Entry[] = hackathons.map((h) => ({
+  id: h.id,
+  role: `${h.awardShort} — ${h.name}`,
+  org: h.event,
+  category: 'hackathon',
+  year: h.year,
+  date: h.year,
+  stat: { value: h.awardShort, label: `${h.award} at ${h.event}` },
+  summary: h.tagline,
+  stack: h.stack.slice(0, 5),
+  href: `/projects#${h.id}`,
+}));
+
+const allEntries: Entry[] = [
   {
     id: 'harvard-gse',
     role: 'Graduate Research Engineer',
@@ -116,30 +133,7 @@ export const entries: Entry[] = [
     summary:
       'Taught AI/ML fundamentals in a program funded by the Tsai Social Justice Fund. Ran coding labs across 10 intensive sessions and presented student projects in NLP and computer vision to nonprofit leaders.',
   },
-  {
-    id: 'brown-hack',
-    role: 'Winner — Realtime AI Debate Platform',
-    org: 'Brown University Hackathon',
-    category: 'hackathon',
-    year: '2025',
-    date: '2025',
-    stat: { value: '1st', label: 'place at Brown University Hackathon 2025' },
-    summary:
-      'A Vite-based debate platform that uses GPT to analyze arguments, pick winners, and stream real-time feedback via MongoDB. Custom Express.js routes handle livestreams that transcribe debates as they happen.',
-    stack: ['Vite', 'Express', 'MongoDB', 'OpenAI'],
-  },
-  {
-    id: 'nvidia-hack',
-    role: 'Top 5 — Story Generation App',
-    org: 'NVIDIA x Vercel Hackathon',
-    category: 'hackathon',
-    year: '2025',
-    date: '2025',
-    stat: { value: 'Top 5', label: 'finish at NVIDIA x Vercel Hackathon 2025' },
-    summary:
-      "A Next.js 15 app that turns prompts into personalized children's comics. Multi-step AI pipelines run on NVIDIA NIM VLMs (Llama 3.3, Consistency NIM), with TypeScript APIs and image-validation middleware for robust error handling.",
-    stack: ['Next.js', 'React 19', 'NVIDIA NIM', 'TypeScript'],
-  },
+  ...hackathonEntries,
   {
     id: 'simply-friendly',
     role: 'Fullstack Developer',
@@ -203,6 +197,10 @@ export const entries: Entry[] = [
     stack: ['HTML', 'CSS', 'JavaScript'],
   },
 ];
+
+// Current roles first, then newest year first; ties keep their written order
+const yearRank = (e: Entry) => (e.current ? 9999 : Number.parseInt(e.year, 10) || 0);
+export const entries = [...allEntries].sort((a, b) => yearRank(b) - yearRank(a));
 
 export const projects = [
   {
