@@ -10,8 +10,8 @@ import { entries, projects } from '@/app/data/experience';
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const facts: { lead: ReactNode; detail: string }[] = [
-  { lead: 'Harvard grad student', detail: 'in EdTech' },
-  { lead: 'NYU CS + Data Science', detail: 'finished in 3 years' },
+  { lead: <span className="text-crimson">Harvard grad student</span>, detail: 'in EdTech' },
+  { lead: <span className="text-nyu-violet">NYU CS + Data Science</span>, detail: 'finished in 3 years' },
   { lead: <>Content creator, <span className="text-accent">1M+</span></>, detail: 'impressions and counting' },
 ];
 
@@ -48,15 +48,27 @@ export default function HomePage() {
       <div className="min-h-screen bg-paper text-ink selection:bg-accent selection:text-paper">
         {/* Header */}
         <header className="sticky top-0 z-50 border-b border-stone-300/70 bg-paper/85 backdrop-blur-md">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-4 sm:px-6 lg:px-8">
             <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
               <span className="h-2.5 w-2.5 bg-accent" aria-hidden />
               Maheen Rassell
             </Link>
-            <nav className="flex gap-5 text-sm text-stone-500 md:gap-8">
-              <a href="#experience" className="hidden transition-colors hover:text-ink sm:inline">Experience</a>
+            <nav className="flex flex-wrap items-center gap-x-3.5 gap-y-1 text-[13px] text-stone-500 sm:gap-x-5 sm:text-sm md:gap-x-7">
+              <a href="#experience" className="hidden transition-colors hover:text-ink lg:inline">Experience</a>
               <Link href="/learning-design" className="transition-colors hover:text-ink">Learning Design</Link>
               <Link href="/explore" className="transition-colors hover:text-ink">Explore</Link>
+              <span className="hidden h-4 w-px bg-stone-300 sm:block" aria-hidden />
+              {links.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target={l.href.startsWith('http') ? '_blank' : undefined}
+                  rel={l.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="font-medium text-ink transition-colors hover:text-accent"
+                >
+                  {l.label}
+                </a>
+              ))}
             </nav>
           </div>
         </header>
@@ -64,22 +76,20 @@ export default function HomePage() {
         <main>
           {/* Hero */}
           <section className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 md:pb-24 md:pt-20 lg:px-8">
-            <div className="mb-6 flex items-center justify-between text-sm text-stone-500">
-              <span>Engineer &amp; learning designer — Cambridge, MA</span>
-              <span className="hidden text-stone-400 md:inline">(hover the letters)</span>
-            </div>
+            <p className="mb-6 text-center text-sm text-stone-500">Engineer &amp; learning designer — Cambridge, MA</p>
 
             <h1 className="sr-only">Maheen Rassell</h1>
-            <div aria-hidden className="-ml-[0.04em]">
+            <div aria-hidden>
               {['Maheen', 'Rassell.'].map((word) => (
                 <DancingLetters
                   key={word}
                   text={word}
-                  className="justify-start"
+                  className="justify-center"
                   letterClassName="text-[24vw] font-semibold leading-[0.88] tracking-tighter text-ink dark:text-ink sm:text-[20vw] lg:text-[11rem] xl:text-[14rem]"
                 />
               ))}
             </div>
+            <p className="mt-4 hidden text-center text-sm text-stone-400 md:block">(hover the letters)</p>
 
             <ol className="mt-14 grid border-t border-ink md:mt-20 md:grid-cols-3">
               {facts.map((fact, i) => (

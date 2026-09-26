@@ -129,7 +129,7 @@ function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number
   return lines;
 }
 
-const FONT = 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
+const FONT = '"Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif';
 
 export function createSignTexture(title: string, tagline: string, color: string, hint = 'Walk closer to read') {
   const w = 1024;

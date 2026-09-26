@@ -18,6 +18,8 @@ module.exports = {
         ink: '#141413',
         paper: '#f6f4ef',
         accent: '#e4412b',
+        crimson: '#a51c30',
+        'nyu-violet': '#57068c',
       },
       keyframes: {
         marquee: {

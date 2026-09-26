@@ -2,7 +2,14 @@
 
 import dynamic from 'next/dynamic';
 
-const PortfolioWorld = dynamic(() => import('./PortfolioWorld'), {
+// Sign textures are drawn on canvas, so Space Grotesk must be loaded before the world builds them
+function loadFonts() {
+  return Promise.all(
+    ['500', '600', '700'].map((weight) => document.fonts.load(`${weight} 48px "Space Grotesk"`)),
+  ).catch(() => undefined);
+}
+
+const PortfolioWorld = dynamic(() => loadFonts().then(() => import('./PortfolioWorld')), {
   ssr: false,
   loading: () => (
     <div className="flex h-[100dvh] w-full flex-col items-center justify-center gap-3 bg-[#cfe0ea] text-stone-700">
