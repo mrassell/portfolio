@@ -8,8 +8,8 @@ import ExperienceIndex from '@/app/components/ExperienceIndex';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
 import IntroBook from '@/app/components/intro/IntroBook';
+import HackathonShowcase from '@/app/components/HackathonShowcase';
 import { entries, projects } from '@/app/data/experience';
-import { hackathons } from '@/app/data/hackathons';
 import { contactLinks as links, socialLinks } from '@/app/data/links';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -174,40 +174,7 @@ export default function HomePage() {
               }
             />
             <p className="mb-6 text-sm text-stone-400">Hackathons</p>
-            <ul className="border-t border-ink">
-              {hackathons.map((h, i) => (
-                <motion.li
-                  key={h.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.5, ease, delay: i * 0.05 }}
-                  className="border-b border-stone-300"
-                >
-                  <Link
-                    href={`/projects#${h.id}`}
-                    className="group grid gap-x-6 gap-y-2 py-6 md:grid-cols-[11rem_minmax(0,1fr)_auto] md:items-baseline md:py-7"
-                  >
-                    <span className="text-sm font-semibold text-accent">{h.awardShort}</span>
-                    <span className="min-w-0">
-                      <span className="block text-2xl font-semibold tracking-tight transition-transform duration-300 group-hover:translate-x-1 md:text-3xl">
-                        {h.name}
-                      </span>
-                      <span className="mt-2 block max-w-2xl leading-relaxed text-stone-600">{h.tagline}</span>
-                    </span>
-                    <span className="flex items-center gap-3 text-sm text-stone-500 md:justify-end md:text-right">
-                      <span>
-                        {h.event}
-                        <span className="block text-stone-400">{h.award}</span>
-                      </span>
-                      <span aria-hidden className="hidden text-lg text-ink transition-transform duration-300 group-hover:translate-x-1 md:inline">
-                        →
-                      </span>
-                    </span>
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
+            <HackathonShowcase />
 
             <p className="mb-6 mt-16 text-sm text-stone-400">Also built</p>
             <ul className="grid border-t border-ink md:grid-cols-2">

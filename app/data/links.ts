@@ -8,3 +8,11 @@ export const socialLinks = {
   youtube: { label: 'YouTube', handle: '@mrassell', href: 'https://www.youtube.com/@mrassell' },
   tiktok: { label: 'TikTok', handle: '@timproductions', href: 'https://www.tiktok.com/@timproductions' },
 };
+
+/** From the channel page; update by hand as they grow. */
+export const youtubeChannel = {
+  name: 'Maheen Rassell',
+  subscribers: '43 subscribers',
+  videos: '18 videos',
+  bio: '13 year old me was onto something',
+};

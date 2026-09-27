@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
+import ProjectShot from '@/app/components/ProjectShot';
 import { hackathons, type Hackathon } from '@/app/data/hackathons';
 import { projects } from '@/app/data/experience';
 
@@ -77,6 +78,9 @@ function ProjectSection({ project, index }: { project: Hackathon; index: number 
           <p className="mb-10 mt-5 max-w-2xl text-xl leading-snug tracking-tight text-stone-600 md:text-2xl">
             {project.tagline}
           </p>
+          {project.image && (
+            <ProjectShot src={project.image.src} alt={project.image.alt} className="mb-12 max-w-[34rem]" />
+          )}
           <Detail label="What it does">{project.what}</Detail>
           <Detail label="How it’s built">{project.how}</Detail>
           {project.hardest && <Detail label="Hardest part">{project.hardest}</Detail>}

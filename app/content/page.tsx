@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
-import { socialLinks } from '@/app/data/links';
+import { socialLinks, youtubeChannel } from '@/app/data/links';
 
 export const metadata: Metadata = {
   title: 'Content - Maheen Rassell',
@@ -26,6 +26,32 @@ export default function ContentPage() {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-stone-600 md:text-xl">
             I make videos on YouTube and TikTok. Come say hi.
           </p>
+        </section>
+
+
+        {/* YouTube channel card */}
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:pb-20 lg:px-8">
+          <a
+            href={socialLinks.youtube.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex max-w-3xl flex-col gap-6 rounded-3xl bg-ink p-6 text-paper shadow-[0_30px_60px_-30px_rgba(20,20,19,0.6)] transition-transform duration-500 hover:-translate-y-1 sm:flex-row sm:items-center sm:p-8"
+          >
+            <span className="flex h-24 w-24 shrink-0 items-center justify-center rounded-full bg-[#ef8a6f] text-3xl font-semibold tracking-tight text-[#fff7f2] sm:h-28 sm:w-28">
+              MR
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block text-3xl font-semibold tracking-tight sm:text-4xl">{youtubeChannel.name}</span>
+              <span className="mt-2 block text-stone-400">
+                <span className="font-medium text-paper">{socialLinks.youtube.handle}</span> · {youtubeChannel.subscribers} ·{' '}
+                {youtubeChannel.videos}
+              </span>
+              <span className="mt-2 block text-stone-400">{youtubeChannel.bio}</span>
+            </span>
+            <span className="inline-flex shrink-0 items-center gap-2 self-start rounded-full bg-paper px-5 py-2.5 text-sm font-semibold text-ink transition-colors group-hover:bg-accent group-hover:text-paper sm:self-center">
+              Watch on YouTube <span aria-hidden>↗</span>
+            </span>
+          </a>
         </section>
 
         <ul className="border-t border-ink">

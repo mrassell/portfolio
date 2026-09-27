@@ -14,11 +14,14 @@ export interface Hackathon {
   team?: string[];
   stack: string[];
   links: { label: string; href: string }[];
+  /** Screenshot in /public, roughly 3:2. */
+  image?: { src: string; alt: string };
 }
 
 export const hackathons: Hackathon[] = [
   {
     id: 'lockdown',
+    image: { src: '/projects/lockdown.png', alt: 'LOCKDOWN.cv dashboard labelling two registered people and flagging an unauthorized visitor at a door' },
     name: 'LOCKDOWN.cv',
     tagline: 'Turns existing CCTV into an autonomous security layer that spots boundary breaches and escalates threats.',
     award: 'Winner, Best AI Automation Track',
@@ -43,6 +46,7 @@ export const hackathons: Hackathon[] = [
   },
   {
     id: 'raise-the-bar',
+    image: { src: '/projects/raise-the-bar.png', alt: 'Raise The Bar! battle screen with DJ Dev, a voice waveform and the four battle words' },
     name: 'Raise The Bar!',
     tagline: 'Freestyle rap battles with your friends, live transcription, and an AI DJ who judges your bars.',
     award: 'Winner, Best Beginner + Best Use of Featherless',
@@ -87,6 +91,7 @@ export const hackathons: Hackathon[] = [
   },
   {
     id: 'paw-and-order',
+    image: { src: '/projects/paw-and-order.png', alt: 'Paw & Order title screen: a pixel-art Superior Court with Create Court and Join Court buttons' },
     name: 'Paw & Order',
     tagline: 'An LLM-powered courtroom game that helps shy kids build debate and conversation confidence.',
     award: 'Winner, Best Use of MongoDB Atlas',
