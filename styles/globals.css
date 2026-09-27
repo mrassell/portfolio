@@ -54,16 +54,9 @@ html.intro-seen .intro-overlay {
 }
 
 .intro-float {
-  animation: intro-float 2.6s ease-in-out infinite both;
+  animation: intro-float 3.2s ease-in-out infinite both;
 }
 @keyframes intro-float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.intro-rays {
-  animation: intro-spin 40s linear infinite;
-}
-@keyframes intro-spin {
-  to { transform: rotate(360deg); }
+  50% { transform: translateY(-6px); }
 }

@@ -1,97 +1,95 @@
-// Flat illustrations for the intro, drawn in the site palette on a 100×100 grid
-const ink = '#141413';
-const paper = '#f6f4ef';
-const accent = '#e4412b';
-const crimson = '#a51c30';
-const violet = '#57068c';
-const stone = '#78716c';
-const stoneLight = '#d6d3d1';
+import type { ComponentType } from 'react';
 
-export function Basketball() {
+// Soft, rounded glyphs for the intro. Each one sits on a pastel tile and is drawn
+// in a single deeper tone of that tile's hue on a 100×100 grid.
+
+export interface IntroIcon {
+  name: string;
+  tile: string;
+  tone: string;
+  Glyph: ComponentType<{ tone: string; tile: string }>;
+}
+
+function Basketball({ tone, tile }: { tone: string; tile: string }) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden>
-      <circle cx="50" cy="50" r="42" fill={accent} stroke={ink} strokeWidth="3.5" />
-      <g fill="none" stroke={ink} strokeWidth="3" strokeLinecap="round">
-        <path d="M50 8v84" />
-        <path d="M8 50h84" />
-        <path d="M21 20c14 14 14 46 0 60" />
-        <path d="M79 20c-14 14-14 46 0 60" />
+      <circle cx="50" cy="50" r="40" fill={tone} />
+      <g fill="none" stroke={tile} strokeWidth="5" strokeLinecap="round">
+        <path d="M50 12v76" />
+        <path d="M12 50h76" />
+        <path d="M24 22c13 14 13 42 0 56" />
+        <path d="M76 22c-13 14-13 42 0 56" />
       </g>
-      <path d="M27 27a30 30 0 0 1 14-9" fill="none" stroke="#fff" strokeOpacity="0.55" strokeWidth="4" strokeLinecap="round" />
     </svg>
   );
 }
 
-export function VideoCamera() {
+function VideoCamera({ tone, tile }: { tone: string; tile: string }) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden>
-      <circle cx="30" cy="26" r="13" fill={paper} stroke={ink} strokeWidth="3.5" />
-      <circle cx="30" cy="26" r="4" fill={ink} />
-      <circle cx="58" cy="26" r="13" fill={paper} stroke={ink} strokeWidth="3.5" />
-      <circle cx="58" cy="26" r="4" fill={ink} />
-      <rect x="10" y="40" width="58" height="40" rx="7" fill={ink} />
-      <path d="M68 52l22-11v38l-22-11z" fill={ink} />
-      <circle cx="22" cy="51" r="4" fill={accent} />
-      <rect x="30" y="64" width="28" height="6" rx="3" fill={stone} />
+      <rect x="8" y="28" width="60" height="46" rx="14" fill={tone} />
+      <path d="M72 44l18-10v34l-18-10z" fill={tone} stroke={tone} strokeWidth="8" strokeLinejoin="round" />
+      <circle cx="24" cy="42" r="5" fill={tile} />
     </svg>
   );
 }
 
-export function Sneaker() {
+function Sneaker({ tone, tile }: { tone: string; tile: string }) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden>
       <path
-        d="M8 66c0-12 4-26 12-30l14-4c4 8 12 14 22 16 12 2 28 6 34 18z"
-        fill={violet}
-        stroke={ink}
-        strokeWidth="3.5"
+        d="M12 64c0-14 4-28 12-32 5-2 10-1 13 3 5 7 11 11 20 12 14 2 26 7 30 17z"
+        fill={tone}
+        stroke={tone}
+        strokeWidth="6"
         strokeLinejoin="round"
       />
-      <path d="M38 38l6-3M42 43l6-3M47 47l6-3" stroke={paper} strokeWidth="3" strokeLinecap="round" />
-      <path d="M30 58c10-2 22-2 36 2" fill="none" stroke={paper} strokeWidth="4" strokeLinecap="round" />
-      <path d="M6 66h86a4 4 0 0 1 0 8H10a4 4 0 0 1-4-4z" fill={paper} stroke={ink} strokeWidth="3.5" strokeLinejoin="round" />
+      <rect x="8" y="64" width="84" height="12" rx="6" fill={tone} opacity="0.55" />
+      <circle cx="42" cy="46" r="3.5" fill={tile} />
+      <circle cx="50" cy="50" r="3.5" fill={tile} />
     </svg>
   );
 }
 
-export function Microphone() {
+function Microphone({ tone, tile }: { tone: string; tile: string }) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden>
-      <path d="M24 40c0 18 12 28 26 28s26-10 26-28" fill="none" stroke={ink} strokeWidth="4" strokeLinecap="round" />
-      <rect x="34" y="6" width="32" height="48" rx="16" fill={ink} />
-      <path d="M38 18h24M36 26h28M36 34h28M38 42h24" stroke={stone} strokeWidth="2" />
-      <rect x="44" y="50" width="12" height="6" fill={accent} />
-      <path d="M50 68v18" stroke={ink} strokeWidth="4" />
-      <path d="M34 90h32" stroke={ink} strokeWidth="5" strokeLinecap="round" />
+      <rect x="34" y="8" width="32" height="50" rx="16" fill={tone} />
+      <path d="M38 26h24M38 36h24" stroke={tile} strokeWidth="4" strokeLinecap="round" opacity="0.7" />
+      <path d="M24 44c0 17 12 26 26 26s26-9 26-26" fill="none" stroke={tone} strokeWidth="6" strokeLinecap="round" />
+      <path d="M50 70v16M36 88h28" stroke={tone} strokeWidth="6" strokeLinecap="round" />
     </svg>
   );
 }
 
-export function Laptop() {
+function Laptop({ tone, tile }: { tone: string; tile: string }) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden>
-      <rect x="16" y="18" width="68" height="46" rx="5" fill={ink} />
-      <rect x="21" y="23" width="58" height="36" rx="2" fill={paper} />
-      <g strokeLinecap="round" strokeWidth="3.5">
-        <path d="M27 31h14" stroke={accent} />
-        <path d="M27 39h26" stroke={ink} />
-        <path d="M33 47h20" stroke={stone} />
-        <path d="M27 54h10" stroke={violet} />
-      </g>
-      <path d="M6 68h88l-6 10H12z" fill={stoneLight} stroke={ink} strokeWidth="3.5" strokeLinejoin="round" />
-      <path d="M42 68h16" stroke={ink} strokeWidth="3" />
+      <rect x="16" y="20" width="68" height="46" rx="10" fill={tone} />
+      <rect x="23" y="27" width="54" height="32" rx="5" fill={tile} opacity="0.85" />
+      <path d="M31 38h14M31 47h24" stroke={tone} strokeWidth="5" strokeLinecap="round" />
+      <rect x="6" y="70" width="88" height="10" rx="5" fill={tone} />
     </svg>
   );
 }
 
-export function GradCap() {
+function GradCap({ tone, tile }: { tone: string; tile: string }) {
   return (
     <svg viewBox="0 0 100 100" aria-hidden>
-      <path d="M26 46v16c0 8 48 8 48 0V46" fill={ink} />
-      <path d="M50 20l44 18-44 18L6 38z" fill={ink} stroke={ink} strokeWidth="2" strokeLinejoin="round" />
-      <path d="M50 38l30 10v20" fill="none" stroke={crimson} strokeWidth="3" strokeLinecap="round" />
-      <path d="M76 66h8l-1 12h-6z" fill={crimson} />
-      <circle cx="50" cy="38" r="3.5" fill={crimson} />
+      <path d="M28 50v12c0 9 44 9 44 0V50" fill={tone} opacity="0.7" />
+      <path d="M50 22l40 17-40 17-40-17z" fill={tone} stroke={tone} strokeWidth="8" strokeLinejoin="round" />
+      <circle cx="50" cy="39" r="4" fill={tile} />
+      <path d="M78 45v20" stroke={tone} strokeWidth="5" strokeLinecap="round" />
+      <circle cx="78" cy="69" r="5" fill={tone} />
     </svg>
   );
 }
+
+export const introIcons: IntroIcon[] = [
+  { name: 'basketball', tile: '#fde4da', tone: '#ee8262', Glyph: Basketball },
+  { name: 'laptop', tile: '#e3ebfa', tone: '#7092d6', Glyph: Laptop },
+  { name: 'grad cap', tile: '#f8dfe4', tone: '#c65d72', Glyph: GradCap },
+  { name: 'video camera', tile: '#ebe5fa', tone: '#8d77d4', Glyph: VideoCamera },
+  { name: 'sneaker', tile: '#dff2e8', tone: '#52ad85', Glyph: Sneaker },
+  { name: 'microphone', tile: '#fbf0d6', tone: '#dca33e', Glyph: Microphone },
+];
