@@ -29,3 +29,41 @@ body {
     }
   }
 }
+
+/* Home intro: hidden when already seen this session (set by an inline script in the layout)
+   or when the visitor prefers reduced motion. Without JS it fades itself out as a failsafe. */
+.intro-overlay {
+  animation: intro-failsafe 0.6s ease 8s forwards;
+}
+.intro-overlay.intro-live {
+  animation: none;
+}
+html.intro-seen .intro-overlay {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay {
+    display: none;
+  }
+}
+@keyframes intro-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.intro-float {
+  animation: intro-float 2.6s ease-in-out infinite both;
+}
+@keyframes intro-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.intro-rays {
+  animation: intro-spin 40s linear infinite;
+}
+@keyframes intro-spin {
+  to { transform: rotate(360deg); }
+}

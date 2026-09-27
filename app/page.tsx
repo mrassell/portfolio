@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { MotionConfig, motion } from 'motion/react';
 import DancingLetters from '@/components/ui/dancing-letters';
 import ExperienceIndex from '@/app/components/ExperienceIndex';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
+import IntroBook from '@/app/components/intro/IntroBook';
 import { entries, projects } from '@/app/data/experience';
 import { hackathons } from '@/app/data/hackathons';
 import { contactLinks as links, socialLinks } from '@/app/data/links';
@@ -59,14 +60,18 @@ function SectionHeading({ index, title, aside }: { index: string; title: string;
 }
 
 export default function HomePage() {
+  // Remounting the hero when the intro lifts replays its entrance animations
+  const [introRevealed, setIntroRevealed] = useState(false);
+
   return (
     <MotionConfig reducedMotion="user">
+      <IntroBook onReveal={() => setIntroRevealed(true)} />
       <div className="min-h-screen bg-paper text-ink selection:bg-accent selection:text-paper">
         <SiteHeader />
 
         <main>
           {/* Hero */}
-          <section className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 md:pb-24 md:pt-20 lg:px-8">
+          <section key={introRevealed ? 'revealed' : 'initial'} className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 md:pb-24 md:pt-20 lg:px-8">
             <p className="mb-6 text-center text-sm text-stone-500">Engineer &amp; learning designer — Cambridge, MA</p>
 
             <h1 className="sr-only">Maheen Rassell</h1>
