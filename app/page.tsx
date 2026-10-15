@@ -72,8 +72,6 @@ export default function HomePage() {
         <main>
           {/* Hero */}
           <section key={introRevealed ? 'revealed' : 'initial'} className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 md:pb-24 md:pt-20 lg:px-8">
-            <p className="mb-6 text-center text-sm text-stone-500">Engineer &amp; learning designer — Cambridge, MA</p>
-
             <h1 className="sr-only">Maheen Rassell</h1>
             <div aria-hidden>
               {['Maheen', 'Rassell.'].map((word) => (
@@ -85,7 +83,6 @@ export default function HomePage() {
                 />
               ))}
             </div>
-            <p className="mt-4 hidden text-center text-sm text-stone-400 md:block">(hover the letters)</p>
 
             <ol className="mt-14 grid border-t border-ink md:mt-20 md:grid-cols-3">
               {facts.map((fact, i) => (
