@@ -21,15 +21,6 @@ module.exports = {
         crimson: '#a51c30',
         'nyu-violet': '#57068c',
       },
-      keyframes: {
-        marquee: {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-50%)' },
-        },
-      },
-      animation: {
-        marquee: 'marquee 45s linear infinite',
-      },
       fontFamily: {
         'brutal': ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
       },

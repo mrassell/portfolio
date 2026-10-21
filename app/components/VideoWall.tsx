@@ -1,15 +1,73 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { embedSrc, videos, type Video } from '@/app/data/videos';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-// Ask TikTok's player to stay muted so browsers let it autoplay
-function muteTikTok(frame: HTMLIFrameElement) {
-  frame.contentWindow?.postMessage({ type: 'mute', value: undefined, 'x-tiktok-player': true }, '*');
-  frame.contentWindow?.postMessage({ type: 'play', value: undefined, 'x-tiktok-player': true }, '*');
+const TIKTOK_PLAYING = 1;
+const NUDGE_EVERY_MS = 800;
+const NUDGE_FOR_MS = 15000;
+
+/**
+ * TikTok's embed only autoplays when muted, and it ignores commands sent before its
+ * player is ready. So mute and play as soon as it says onPlayerReady, and keep nudging
+ * until it reports playing, since that message (and the iframe's load event) can fire
+ * before this component hydrates and be missed.
+ */
+function TikTokPlayer({ src, title }: { src: string; title: string }) {
+  const ref = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    let playing = false;
+    const start = () => {
+      const win = ref.current?.contentWindow;
+      if (!win || playing) return;
+      for (const type of ['mute', 'play']) win.postMessage({ type, value: undefined, 'x-tiktok-player': true }, '*');
+    };
+
+    const onMessage = (e: MessageEvent) => {
+      if (!ref.current || e.source !== ref.current.contentWindow) return;
+      let data = e.data;
+      if (typeof data === 'string') {
+        try {
+          data = JSON.parse(data);
+        } catch {
+          return;
+        }
+      }
+      if (!data || !data['x-tiktok-player']) return;
+      if (data.type === 'onPlayerReady') start();
+      if (data.type === 'onStateChange' && data.value === TIKTOK_PLAYING) {
+        // Once it plays, stop nudging so a viewer's own pause sticks
+        playing = true;
+        clearInterval(nudge);
+      }
+    };
+
+    window.addEventListener('message', onMessage);
+    const nudge = window.setInterval(start, NUDGE_EVERY_MS);
+    const stop = window.setTimeout(() => clearInterval(nudge), NUDGE_FOR_MS);
+    start();
+    return () => {
+      window.removeEventListener('message', onMessage);
+      clearInterval(nudge);
+      clearTimeout(stop);
+    };
+  }, [src]);
+
+  return (
+    <iframe
+      ref={ref}
+      src={src}
+      title={title}
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      allowFullScreen
+      className="absolute inset-0 h-full w-full"
+    />
+  );
 }
 
 function Caption({ video, index }: { video: Video; index: number }) {
@@ -51,15 +109,18 @@ function Frame({ video, index, className, tilt = 0 }: { video: Video; index: num
           isTikTok ? 'aspect-[9/16] rounded-[2.25rem] border-[6px] border-[#2a2926]' : 'aspect-video rounded-3xl',
         )}
       >
-        <iframe
-          src={embedSrc(video)}
-          title={`${isTikTok ? 'TikTok' : 'YouTube'} video ${index + 1} by Maheen Rassell`}
-          loading="lazy"
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          allowFullScreen
-          onLoad={isTikTok ? (e) => muteTikTok(e.currentTarget) : undefined}
-          className="absolute inset-0 h-full w-full"
-        />
+        {isTikTok ? (
+          <TikTokPlayer src={embedSrc(video)} title={`TikTok video ${index + 1} by Maheen Rassell`} />
+        ) : (
+          <iframe
+            src={embedSrc(video)}
+            title={`YouTube video ${index + 1} by Maheen Rassell`}
+            loading="lazy"
+            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+          />
+        )}
       </div>
       <Caption video={video} index={index} />
     </motion.figure>

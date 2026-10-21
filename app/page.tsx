@@ -9,7 +9,7 @@ import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
 import IntroBook from '@/app/components/intro/IntroBook';
 import HackathonShowcase from '@/app/components/HackathonShowcase';
-import { entries, projects } from '@/app/data/experience';
+import { projects } from '@/app/data/experience';
 import { contactLinks as links, socialLinks } from '@/app/data/links';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -37,9 +37,6 @@ const facts: { lead: ReactNode; detail: ReactNode }[] = [
     ),
   },
 ];
-
-// Unique orgs, in index order, for the ticker
-const orgs = Array.from(new Set(entries.map((e) => e.org)));
 
 function SectionHeading({ index, title, aside }: { index: string; title: string; aside?: ReactNode }) {
   return (
@@ -139,22 +136,6 @@ export default function HomePage() {
               </div>
             </motion.div>
           </section>
-
-          {/* Org ticker */}
-          <div className="overflow-hidden border-y border-stone-300 py-4" aria-hidden>
-            <div className="flex w-max animate-marquee">
-              {[0, 1].map((copy) => (
-                <ul key={copy} className="flex shrink-0 items-center">
-                  {orgs.map((org) => (
-                    <li key={org} className="flex items-center whitespace-nowrap text-lg font-medium tracking-tight text-stone-400 md:text-xl">
-                      <span className="px-6">{org}</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                    </li>
-                  ))}
-                </ul>
-              ))}
-            </div>
-          </div>
 
           {/* Projects */}
           <section id="projects" className="mx-auto max-w-7xl scroll-mt-20 px-4 py-20 sm:px-6 md:py-28 lg:px-8">
