@@ -147,9 +147,16 @@ export default function VideoWall() {
               </span>
               Now playing
             </p>
-            <h2 className="text-4xl font-semibold tracking-tight md:text-6xl">The screening room</h2>
+            <h1 className="text-5xl font-semibold leading-[0.95] tracking-tight md:text-7xl">
+              <span className="text-accent">1M+</span> impressions{' '}
+              <br />
+              and loading
+            </h1>
           </div>
-          <p className="max-w-xs text-sm text-stone-400">Everything plays muted here. Tap a video for sound, or open it on the platform.</p>
+          <p className="max-w-xs text-sm leading-relaxed text-stone-400">
+            I make videos on YouTube and TikTok. Everything plays muted here; tap a video for sound, or open it on the
+            platform.
+          </p>
         </div>
 
         <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">

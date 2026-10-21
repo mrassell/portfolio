@@ -17,21 +17,10 @@ export default function ContentPage() {
       <SiteHeader />
 
       <main>
-        <section className="mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 md:pb-24 md:pt-20 lg:px-8">
-          <p className="mb-4 text-sm text-stone-500">Content</p>
-          <h1 className="text-5xl font-semibold leading-[0.95] tracking-tight md:text-8xl">
-            <span className="text-accent">1M+</span> impressions
-            <br />
-            and counting.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-stone-600 md:text-xl">
-            I make videos on YouTube and TikTok. Come say hi.
-          </p>
-        </section>
-
+        <VideoWall />
 
         {/* YouTube channel card */}
-        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:pb-20 lg:px-8">
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
           <a
             href={socialLinks.youtube.href}
             target="_blank"
@@ -54,8 +43,6 @@ export default function ContentPage() {
             </span>
           </a>
         </section>
-
-        <VideoWall />
 
         <ul className="border-t border-ink">
           {channels.map((c, i) => (
