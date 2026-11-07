@@ -17,6 +17,8 @@ export interface Entry {
   stack?: string[];
   /** Optional deep link, e.g. a project write-up. */
   href?: string;
+  /** The organisation's own site, linked from the details. */
+  website?: { label: string; href: string };
 }
 
 export const categoryLabels: Record<Category, string> = {
@@ -40,6 +42,28 @@ const hackathonEntries: Entry[] = hackathons.map((h) => ({
 
 const allEntries: Entry[] = [
   {
+    id: 'zencube',
+    role: 'Chief Technology Officer',
+    org: 'Zen Cube Wellness Technologies, Inc.',
+    category: 'work',
+    year: 'Now',
+    date: 'Present',
+    current: true,
+    website: { label: 'zencube.co', href: 'https://zencube.co' },
+    summary: 'Leading technology at Zen Cube, a wellness technology company building a multisensory, portable sanctuary for calm and mindfulness.',
+  },
+  {
+    id: 'amoeba',
+    role: 'Founding Engineer',
+    org: 'Amoeba',
+    category: 'work',
+    year: 'Now',
+    date: 'Present',
+    current: true,
+    website: { label: 'useamoeba.com', href: 'https://useamoeba.com' },
+    summary: 'Founding engineer on Amoeba, a multiplayer AI IDE where teams use Claude Code and Codex in shared workspaces with live context, overlap warnings and Git worktrees.',
+  },
+  {
     id: 'harvard-gse',
     role: 'Graduate Research Engineer',
     org: 'Harvard Graduate School of Education',
@@ -60,16 +84,6 @@ const allEntries: Entry[] = [
     location: 'Cambridge, MA',
     current: true,
     summary: 'Backend development for the Human Flourishing Program at Harvard.',
-  },
-  {
-    id: 'zencube',
-    role: 'Software Engineer',
-    org: 'Zencube',
-    category: 'work',
-    year: 'Now',
-    date: 'Present · Part-time',
-    current: true,
-    summary: 'Software engineering on a physical mental health device.',
   },
   {
     id: 'hgse-vc',

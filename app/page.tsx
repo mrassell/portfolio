@@ -110,8 +110,8 @@ export default function HomePage() {
                 <p className="text-xl leading-snug tracking-tight text-stone-600 md:text-3xl md:leading-snug">
                   <span className="text-ink">I build agentic workflows and learning tools</span> for the students who
                   go quiet when they feel behind. Right now I&apos;m a research engineer at Harvard&apos;s Graduate
-                  School of Education, a backend developer for the Human Flourishing Program, and a software engineer
-                  on Zencube&apos;s mental health device. Along the way:{' '}
+                  School of Education, a backend developer for the Human Flourishing Program, and CTO of Zen Cube
+                  Wellness Technologies, where we&apos;re building a mental health device. Along the way:{' '}
                   <span className="text-ink">five hackathon awards</span>, from Hack@Brown to Tech@NYU&apos;s
                   Startup Week, plus a <span className="text-ink">top 5 at NVIDIA x Vercel</span>.
                 </p>

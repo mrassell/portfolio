@@ -44,6 +44,18 @@ export const SECTIONS: Section[] = [
     color: '#3d5a80',
     items: [
       {
+        heading: 'Chief Technology Officer',
+        org: 'Zen Cube Wellness Technologies, Inc.',
+        meta: 'Present',
+        body: 'Leading technology at Zen Cube, a wellness technology company building a multisensory, portable sanctuary for calm and mindfulness.',
+      },
+      {
+        heading: 'Founding Engineer',
+        org: 'Amoeba',
+        meta: 'Present',
+        body: 'Founding engineer on Amoeba, a multiplayer AI IDE where teams use Claude Code and Codex in shared workspaces with live context, overlap warnings and Git worktrees.',
+      },
+      {
         heading: 'Graduate Research Engineer',
         org: 'Harvard Graduate School of Education',
         meta: 'Present · Cambridge, MA',
@@ -54,12 +66,6 @@ export const SECTIONS: Section[] = [
         org: 'Human Flourishing Program at Harvard',
         meta: 'Present · Cambridge, MA',
         body: 'Backend development for the Human Flourishing Program at Harvard.',
-      },
-      {
-        heading: 'Software Engineer (Part-time)',
-        org: 'Zencube',
-        meta: 'Present',
-        body: 'Software engineering on a physical mental health device.',
       },
       {
         heading: 'Data Engineering Intern',

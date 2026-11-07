@@ -34,6 +34,19 @@ function Details({ entry }: { entry: Entry }) {
         </div>
       )}
       <p className="text-base leading-relaxed text-stone-700">{entry.summary}</p>
+      {entry.website && (
+        <a
+          href={entry.website.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent"
+        >
+          <span className="border-b border-ink/30 pb-0.5 transition-colors group-hover:border-accent">{entry.website.label}</span>
+          <span aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+            ↗
+          </span>
+        </a>
+      )}
       {entry.href && (
         <Link href={entry.href} className="inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-accent">
           <span className="border-b border-ink/30 pb-0.5">Read the full write-up</span>
@@ -201,7 +214,15 @@ export default function ExperienceIndex() {
                 transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
               >
                 <div className="mb-8">
-                  <p className="text-sm text-stone-500">{active.org}</p>
+                  <p className="text-sm text-stone-500">
+                    {active.website ? (
+                      <a href={active.website.href} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
+                        {active.org}
+                      </a>
+                    ) : (
+                      active.org
+                    )}
+                  </p>
                   <h3 className="mt-1 text-3xl font-semibold leading-tight tracking-tight text-ink">{active.role}</h3>
                   {(active.date || active.location) && (
                     <p className="mt-2 text-sm text-stone-500">
