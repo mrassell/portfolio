@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
+import { cn } from '@/lib/utils';
 import VideoWall from './VideoWall';
 import ChannelCard from './ChannelCard';
 import RoleList from './RoleList';
@@ -11,12 +12,11 @@ import { experience, leadership } from '@/app/data/experience';
 import { homeSections, sectionFromHash, type HomeSectionId } from '@/app/data/sections';
 
 function Panel({ title, aside, children }: { title: string; aside?: ReactNode; children: ReactNode }) {
+  // The big section name above already labels the panel, so the heading here is for screen readers only
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4 md:mb-14">
-        <h2 className="text-4xl font-semibold tracking-tight text-ink md:text-6xl">{title}</h2>
-        {aside}
-      </div>
+    <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:pb-24 lg:px-8">
+      <h2 className="sr-only">{title}</h2>
+      {aside && <div className="mb-6 flex justify-end">{aside}</div>}
       {children}
     </div>
   );
@@ -36,7 +36,7 @@ function SectionBody({ id }: { id: HomeSectionId }) {
     case 'experience':
       return (
         <Panel title="Experience">
-          <div className="max-w-4xl">
+          <div className="mx-auto max-w-4xl">
             <RoleList roles={experience} />
           </div>
         </Panel>
@@ -44,7 +44,7 @@ function SectionBody({ id }: { id: HomeSectionId }) {
     case 'leadership':
       return (
         <Panel title="Leadership">
-          <div className="max-w-4xl">
+          <div className="mx-auto max-w-4xl">
             <RoleList roles={leadership} />
           </div>
         </Panel>
@@ -69,40 +69,97 @@ function SectionBody({ id }: { id: HomeSectionId }) {
 }
 
 /**
- * The area under the hero. Shows one section at a time, chosen from the navbar
- * (which sets the URL hash, e.g. /#experience), and scrolls it into view.
+ * The area under the hero: four large section names (Content, Experience,
+ * Leadership, Projects) and, right below them, the one that is picked. The pick
+ * is kept in the URL hash, so /#leadership links and back/forward work.
  */
 export default function HomeSections() {
   const [active, setActive] = useState<HomeSectionId>(homeSections[0].id);
-  const ref = useRef<HTMLElement>(null);
+  const switcher = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const open = () => {
+    const fromHash = (scroll: boolean) => {
       const id = sectionFromHash(window.location.hash);
       if (!id) return;
       setActive(id);
-      requestAnimationFrame(() => ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      // Arriving from a link elsewhere: bring the section names and the panel into view
+      if (scroll) requestAnimationFrame(() => switcher.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     };
-    open();
-    window.addEventListener('hashchange', open);
-    return () => window.removeEventListener('hashchange', open);
+    fromHash(true);
+    const onHash = () => fromHash(false);
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
-  const label = homeSections.find((s) => s.id === active)?.label;
+  // Clicking shows the section right underneath, so there is nothing to scroll to
+  const pick = (id: HomeSectionId) => {
+    setActive(id);
+    if (window.location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
+  };
+
+  // Arrow keys move between the names, as in any tab list
+  const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    const i = homeSections.findIndex((s) => s.id === active);
+    const next = homeSections[(i + (e.key === 'ArrowRight' ? 1 : homeSections.length - 1)) % homeSections.length];
+    pick(next.id);
+    document.getElementById(`tab-${next.id}`)?.focus();
+  };
 
   return (
-    <section ref={ref} aria-label={label} className="scroll-mt-24 lg:scroll-mt-16">
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+    <section aria-label="Sections">
+      <div ref={switcher} className="mx-auto max-w-7xl scroll-mt-24 px-4 pb-10 pt-14 sm:px-6 md:pb-14 md:pt-20 lg:scroll-mt-16 lg:px-8">
+        <div
+          role="tablist"
+          aria-label="Sections"
+          onKeyDown={onKeyDown}
+          className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 sm:gap-x-12"
         >
-          <SectionBody id={active} />
-        </motion.div>
-      </AnimatePresence>
+          {homeSections.map((s) => {
+            const selected = s.id === active;
+            return (
+              <button
+                key={s.id}
+                id={`tab-${s.id}`}
+                type="button"
+                role="tab"
+                aria-selected={selected}
+                aria-controls="section-panel"
+                tabIndex={selected ? 0 : -1}
+                onClick={() => pick(s.id)}
+                className={cn(
+                  'relative pb-2 text-2xl font-semibold tracking-tight transition-colors sm:text-3xl md:text-4xl',
+                  selected ? 'text-ink' : 'text-stone-400 hover:text-ink',
+                )}
+              >
+                {s.label}
+                {selected && (
+                  <motion.span
+                    layoutId="section-underline"
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-[3px] rounded-full bg-accent"
+                    transition={{ type: 'spring', stiffness: 420, damping: 36 }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div id="section-panel" role="tabpanel" aria-labelledby={`tab-${active}`}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <SectionBody id={active} />
+          </motion.div>
+        </AnimatePresence>
+      </div>
     </section>
   );
 }
