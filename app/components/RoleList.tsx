@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
-import { experience, leadership, type Role } from '@/app/data/experience';
+import type { Role } from '@/app/data/experience';
+import MonogramTile from './MonogramTile';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -49,7 +50,6 @@ function dateLine(role: Role, now: { y: number; m: number } | null) {
 }
 
 function RoleRow({ role, now, index }: { role: Role; now: { y: number; m: number } | null; index: number }) {
-  const [bg, fg] = role.tint;
   const dates = dateLine(role, now);
   return (
     <motion.li
@@ -59,13 +59,7 @@ function RoleRow({ role, now, index }: { role: Role; now: { y: number; m: number
       transition={{ duration: 0.5, ease, delay: Math.min(index, 4) * 0.04 }}
       className="flex gap-4 border-b border-stone-300 py-5"
     >
-      <span
-        aria-hidden
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-semibold tracking-tight"
-        style={{ background: bg, color: fg }}
-      >
-        {role.mark}
-      </span>
+      <MonogramTile mark={role.mark} tint={role.tint} />
       <div className="min-w-0">
         <h3 className="text-lg font-semibold leading-snug tracking-tight text-ink">{role.title}</h3>
         <p className="text-sm text-stone-700">
@@ -94,29 +88,14 @@ function RoleRow({ role, now, index }: { role: Role; now: { y: number; m: number
   );
 }
 
-function RoleGroup({ label, roles, now }: { label: string; roles: Role[]; now: { y: number; m: number } | null }) {
-  return (
-    <div>
-      <p className="mb-4 text-sm text-stone-400">{label}</p>
-      <ul className="border-t border-ink">
-        {roles.map((role, i) => (
-          <RoleRow key={`${role.title}-${role.org}`} role={role} now={now} index={i} />
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default function ExperienceList() {
+/** A LinkedIn-style list of roles: tile, title, company, dates with duration, location and one line. */
+export default function RoleList({ roles }: { roles: Role[] }) {
   const now = useCurrentMonth();
   return (
-    <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
-      <div className="lg:col-span-8">
-        <RoleGroup label="Experience" roles={experience} now={now} />
-      </div>
-      <div className="lg:col-span-4">
-        <RoleGroup label="Leadership" roles={leadership} now={now} />
-      </div>
-    </div>
+    <ul className="border-t border-ink">
+      {roles.map((role, i) => (
+        <RoleRow key={`${role.title}-${role.org}`} role={role} now={now} index={i} />
+      ))}
+    </ul>
   );
 }

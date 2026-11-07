@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
 import VideoWall from '@/app/components/VideoWall';
+import ChannelCard from '@/app/components/ChannelCard';
 import { socialLinks } from '@/app/data/links';
 
 export const metadata: Metadata = {
@@ -21,20 +22,7 @@ export default function ContentPage() {
 
         {/* YouTube channel */}
         <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-          <a
-            href={socialLinks.youtube.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block max-w-[908px] overflow-hidden rounded-xl sm:rounded-3xl shadow-[0_30px_60px_-30px_rgba(20,20,19,0.6)] ring-1 ring-ink/5 transition-transform duration-500 hover:-translate-y-1"
-          >
-            <img
-              src="/content/youtube-channel.png"
-              alt="Maheen Rassell's YouTube channel, @mrassell: 43 subscribers, 18 videos. 13 year old me was onto something"
-              width={1816}
-              height={378}
-              className="block h-auto w-full"
-            />
-          </a>
+          <ChannelCard />
         </section>
 
         <ul className="border-t border-ink">

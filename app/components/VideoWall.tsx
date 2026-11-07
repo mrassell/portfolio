@@ -127,7 +127,9 @@ function Frame({ video, index, className, tilt = 0 }: { video: Video; index: num
   );
 }
 
-export default function VideoWall() {
+/** headingLevel: h1 when this is the page's opening section (/content), h2 when it sits under another hero. */
+export default function VideoWall({ headingLevel = 'h1' }: { headingLevel?: 'h1' | 'h2' }) {
+  const Heading = headingLevel;
   const youtube = videos.filter((v) => v.platform === 'youtube');
   const tiktok = videos.filter((v) => v.platform === 'tiktok');
 
@@ -147,11 +149,11 @@ export default function VideoWall() {
               </span>
               Now playing
             </p>
-            <h1 className="text-5xl font-semibold leading-[0.95] tracking-tight md:text-7xl">
+            <Heading className="text-5xl font-semibold leading-[0.95] tracking-tight md:text-7xl">
               <span className="text-accent">1M+</span> impressions{' '}
               <br />
               and loading
-            </h1>
+            </Heading>
           </div>
           <p className="max-w-xs text-sm leading-relaxed text-stone-400">
             I make videos on YouTube and TikTok. Everything plays muted here; tap a video for sound, or open it on the

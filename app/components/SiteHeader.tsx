@@ -1,15 +1,38 @@
-import Link from 'next/link';
-import { contactLinks } from '@/app/data/links';
+'use client';
 
-const pages = [
-  { label: 'Projects', href: '/projects' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Learning Design', href: '/learning-design' },
-  { label: 'Content', href: '/content' },
-  { label: 'Explore', href: '/explore' },
-];
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState, type MouseEvent } from 'react';
+import { cn } from '@/lib/utils';
+import { contactLinks } from '@/app/data/links';
+import { homeSections, sectionFromHash, type HomeSectionId } from '@/app/data/sections';
+
+// Standalone pages that mirror a home section, so its nav item reads as current there too
+const pageSection: Record<string, HomeSectionId> = { '/content': 'content', '/projects': 'projects' };
 
 export default function SiteHeader() {
+  const pathname = usePathname();
+  const onHome = pathname === '/';
+  const [hashSection, setHashSection] = useState<HomeSectionId | null>(null);
+
+  useEffect(() => {
+    const sync = () => setHashSection(sectionFromHash(window.location.hash));
+    sync();
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
+
+  const current = onHome ? (hashSection ?? homeSections[0].id) : pageSection[pathname];
+
+  // On the home page, switch sections in place; elsewhere the link opens the home page at that section
+  const open = (id: HomeSectionId) => (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!onHome) return;
+    e.preventDefault();
+    // Re-clicking the current section just scrolls back to it, without a duplicate history entry
+    if (window.location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-stone-300/70 bg-paper/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6 md:py-4 lg:flex-nowrap lg:px-8">
@@ -18,7 +41,7 @@ export default function SiteHeader() {
           Maheen Rassell
         </Link>
 
-        {/* Social links sit beside the name on small screens and after the page links on large ones */}
+        {/* Social links sit beside the name on small screens and after the section links on large ones */}
         <div className="flex items-center gap-x-3.5 text-[13px] sm:gap-x-5 sm:text-sm lg:order-last">
           {contactLinks.map((l) => (
             <a
@@ -33,12 +56,25 @@ export default function SiteHeader() {
           ))}
         </div>
 
-        <nav className="flex w-full flex-wrap items-center gap-x-3.5 gap-y-1 text-[13px] text-stone-500 sm:gap-x-5 sm:text-sm lg:ml-auto lg:w-auto lg:gap-x-7 lg:border-r lg:border-stone-300 lg:pr-7">
-          {pages.map((p) => (
-            <Link key={p.href} href={p.href} className="whitespace-nowrap transition-colors hover:text-ink">
-              {p.label}
-            </Link>
-          ))}
+        <nav className="flex w-full flex-wrap items-center gap-x-4 gap-y-1 text-[13px] sm:gap-x-5 sm:text-sm lg:ml-auto lg:w-auto lg:gap-x-7 lg:border-r lg:border-stone-300 lg:pr-7">
+          {homeSections.map((s) => {
+            const isCurrent = s.id === current;
+            return (
+              <a
+                key={s.id}
+                href={`/#${s.id}`}
+                onClick={open(s.id)}
+                aria-current={isCurrent ? 'true' : undefined}
+                className={cn(
+                  'relative whitespace-nowrap py-1 transition-colors',
+                  isCurrent ? 'font-medium text-ink' : 'text-stone-500 hover:text-ink',
+                )}
+              >
+                {s.label}
+                {isCurrent && <span aria-hidden className="absolute inset-x-0 -bottom-0.5 h-0.5 rounded-full bg-accent" />}
+              </a>
+            );
+          })}
         </nav>
       </div>
     </header>

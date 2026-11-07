@@ -4,12 +4,10 @@ import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 import { MotionConfig, motion } from 'motion/react';
 import DancingLetters from '@/components/ui/dancing-letters';
-import ExperienceList from '@/app/components/ExperienceList';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
 import IntroBook from '@/app/components/intro/IntroBook';
-import HackathonShowcase from '@/app/components/HackathonShowcase';
-import { projects } from '@/app/data/experience';
+import HomeSections from '@/app/components/HomeSections';
 import { contactLinks as links, socialLinks } from '@/app/data/links';
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -37,24 +35,6 @@ const facts: { lead: ReactNode; detail: ReactNode }[] = [
     ),
   },
 ];
-
-function SectionHeading({ index, title, aside }: { index: string; title: string; aside?: ReactNode }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.6, ease }}
-      className="mb-10 flex flex-wrap items-end justify-between gap-4 md:mb-14"
-    >
-      <div>
-        <p className="mb-3 text-sm tabular-nums text-stone-400">({index})</p>
-        <h2 className="text-4xl font-semibold tracking-tight text-ink md:text-6xl">{title}</h2>
-      </div>
-      {aside}
-    </motion.div>
-  );
-}
 
 export default function HomePage() {
   // Remounting the hero when the intro lifts replays its entrance animations
@@ -137,49 +117,8 @@ export default function HomePage() {
             </motion.div>
           </section>
 
-          {/* Projects */}
-          <section id="projects" className="mx-auto max-w-7xl scroll-mt-20 px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-            <SectionHeading
-              index="01"
-              title="Projects"
-              aside={
-                <Link href="/projects" className="group inline-flex items-center gap-1.5 text-sm font-medium">
-                  <span className="border-b border-ink/30 pb-0.5 transition-colors group-hover:border-accent group-hover:text-accent">
-                    Full write-ups
-                  </span>
-                  <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </Link>
-              }
-            />
-            <p className="mb-6 text-sm text-stone-400">Hackathons</p>
-            <HackathonShowcase />
-
-            <p className="mb-6 mt-16 text-sm text-stone-400">Also built</p>
-            <ul className="grid border-t border-ink md:grid-cols-2">
-              {projects.map((p, i) => (
-                <motion.li
-                  key={p.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.5, ease, delay: (i % 2) * 0.08 }}
-                  className="border-b border-stone-300 py-7 md:odd:border-r md:odd:pr-10 md:even:pl-10"
-                >
-                  <div className="mb-3 flex items-baseline justify-between gap-4">
-                    <h3 className="text-2xl font-semibold tracking-tight">{p.name}</h3>
-                    <span className="text-xs font-medium uppercase tracking-wider text-stone-400">{p.kind}</span>
-                  </div>
-                  <p className="leading-relaxed text-stone-600">{p.summary}</p>
-                </motion.li>
-              ))}
-            </ul>
-          </section>
-
-          {/* Experience & leadership */}
-          <section id="experience" className="mx-auto max-w-7xl scroll-mt-20 px-4 pb-20 sm:px-6 md:pb-28 lg:px-8">
-            <SectionHeading index="02" title="Experience & leadership" />
-            <ExperienceList />
-          </section>
+          {/* Content, Experience, Leadership or Projects, picked from the navbar */}
+          <HomeSections />
 
           {/* Learning design */}
           <section className="border-t border-stone-300">
@@ -189,7 +128,6 @@ export default function HomePage() {
                 className="absolute inset-0 translate-y-full bg-ink transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0"
               />
               <div className="relative mx-auto max-w-7xl px-4 py-16 transition-colors duration-500 sm:px-6 md:py-24 lg:px-8">
-                <p className="mb-4 text-sm tabular-nums text-stone-400">(03)</p>
                 <div className="flex items-end justify-between gap-6">
                   <h2 className="text-5xl font-semibold leading-[0.95] tracking-tight text-ink transition-colors duration-500 group-hover:text-paper md:text-8xl">
                     Learning design

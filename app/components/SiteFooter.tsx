@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { contactLinks, socialLinks } from '@/app/data/links';
 
 const footerLinks = [...contactLinks.slice(1), socialLinks.youtube, socialLinks.tiktok];
@@ -15,6 +16,12 @@ export default function SiteFooter() {
         </a>
         <div className="mt-12 flex flex-wrap items-center justify-between gap-4 text-sm text-stone-500">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/learning-design" className="hover:text-ink">
+              Learning Design
+            </Link>
+            <Link href="/explore" className="hover:text-ink">
+              Explore
+            </Link>
             {footerLinks.map((l) => (
               <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="hover:text-ink">
                 {l.label}

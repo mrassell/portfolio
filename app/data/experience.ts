@@ -180,24 +180,36 @@ export const leadership: Role[] = [
 export const projects = [
   {
     name: 'Aurangzeb',
+    short: '3D clothing storefront with Stripe checkout and an admin dashboard',
+    mark: 'A',
+    tint: ['#ece9e3', '#57534e'] as [string, string],
     kind: 'E-commerce',
     summary:
       'Storefront on Next.js, PostgreSQL and Prisma with Stripe payments, webhook-driven order flows, React-Three-Fiber 3D apparel previews, and an admin dashboard for drops and inventory.',
   },
   {
     name: 'Kalendar',
+    short: 'shared calendar for friends, with a 50-person waitlist before launch',
+    mark: 'K',
+    tint: ['#fde4da', '#d4572f'] as [string, string],
     kind: 'Social calendar',
     summary:
       'A shared calendar for friends built on Next.js and Postgres Realtime. Drew a 50-person waitlist before launch.',
   },
   {
     name: 'Inventory Manager',
+    short: 'pantry tracker with real-time sync that works offline',
+    mark: 'IM',
+    tint: ['#dff2e8', '#3f8f6c'] as [string, string],
     kind: 'Web app',
     summary:
       'Pantry and storage tracker with full CRUD, Firebase real-time sync, and Firestore offline caching.',
   },
   {
     name: 'AI Chatbot',
+    short: 'GPT-4 chatbot tuned for clear, respectful answers',
+    mark: 'AI',
+    tint: ['#ebe5fa', '#57068c'] as [string, string],
     kind: 'LLM',
     summary: 'A GPT-4 chatbot with system prompts tuned for clear, respectful, accurate answers.',
   },
