@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState, type ReactNode } from 'react';
 import { MotionConfig, motion } from 'motion/react';
 import DancingLetters from '@/components/ui/dancing-letters';
-import ExperienceIndex from '@/app/components/ExperienceIndex';
+import ExperienceList from '@/app/components/ExperienceList';
 import SiteHeader from '@/app/components/SiteHeader';
 import SiteFooter from '@/app/components/SiteFooter';
 import IntroBook from '@/app/components/intro/IntroBook';
@@ -177,16 +177,8 @@ export default function HomePage() {
 
           {/* Experience & leadership */}
           <section id="experience" className="mx-auto max-w-7xl scroll-mt-20 px-4 pb-20 sm:px-6 md:pb-28 lg:px-8">
-            <SectionHeading
-              index="02"
-              title="Experience & leadership"
-              aside={
-                <p className="max-w-xs text-sm text-stone-500">
-                  Every role, club and hackathon. Filter, then hover a row (or tap it) for the details.
-                </p>
-              }
-            />
-            <ExperienceIndex />
+            <SectionHeading index="02" title="Experience & leadership" />
+            <ExperienceList />
           </section>
 
           {/* Learning design */}

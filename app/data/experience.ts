@@ -1,220 +1,181 @@
-import { hackathons } from './hackathons';
-
-export type Category = 'work' | 'leadership' | 'hackathon';
-
-export interface Entry {
-  id: string;
-  role: string;
+export interface Role {
+  title: string;
   org: string;
-  category: Category;
-  /** Short label for the year column in the index. */
-  year: string;
-  date?: string;
+  /** Short mark shown in the logo tile. */
+  mark: string;
+  /** Tile colours: background and text. */
+  tint: [string, string];
+  /** e.g. Full-time, Part-time, Internship */
+  type?: string;
+  /** Months as "YYYY-MM"; no end means present. */
+  start?: string;
+  end?: string;
+  /** Free-text dates when there are no exact months. */
+  dates?: string;
   location?: string;
-  current?: boolean;
-  stat?: { value: string; label: string };
-  summary: string;
-  stack?: string[];
-  /** Optional deep link, e.g. a project write-up. */
-  href?: string;
-  /** The organisation's own site, linked from the details. */
+  description?: string;
   website?: { label: string; href: string };
 }
 
-export const categoryLabels: Record<Category, string> = {
-  work: 'Work',
-  leadership: 'Leadership',
-  hackathon: 'Hackathon',
-};
-
-const hackathonEntries: Entry[] = hackathons.map((h) => ({
-  id: h.id,
-  role: `${h.awardShort} — ${h.name}`,
-  org: h.event,
-  category: 'hackathon',
-  year: h.year,
-  date: h.year,
-  stat: { value: h.awardShort, label: `${h.award} at ${h.event}` },
-  summary: h.tagline,
-  stack: h.stack.slice(0, 5),
-  href: `/projects#${h.id}`,
-}));
-
-const allEntries: Entry[] = [
+// Mirrors the Experience section on LinkedIn, in the same order
+export const experience: Role[] = [
   {
-    id: 'zencube',
-    role: 'Chief Technology Officer',
-    org: 'Zen Cube Wellness Technologies, Inc.',
-    category: 'work',
-    year: 'Now',
-    date: 'Present',
-    current: true,
-    website: { label: 'zencube.co', href: 'https://zencube.co' },
-    summary: 'Leading technology at Zen Cube, a wellness technology company building a multisensory, portable sanctuary for calm and mindfulness.',
-  },
-  {
-    id: 'amoeba',
-    role: 'Founding Engineer',
+    title: 'Founding Engineer',
     org: 'Amoeba',
-    category: 'work',
-    year: 'Now',
-    date: 'Present',
-    current: true,
+    mark: 'A',
+    tint: ['#e3ebfa', '#4f6fb5'],
+    start: '2026-06',
+    description: 'multiplayer AI IDE for teams',
     website: { label: 'useamoeba.com', href: 'https://useamoeba.com' },
-    summary: 'Founding engineer on Amoeba, a multiplayer AI IDE where teams use Claude Code and Codex in shared workspaces with live context, overlap warnings and Git worktrees.',
   },
   {
-    id: 'harvard-gse',
-    role: 'Graduate Research Engineer',
+    title: 'Chief Technology Officer',
+    org: 'Zen Cube Wellness Technologies Inc.',
+    mark: 'ZC',
+    tint: ['#dff2e8', '#3f8f6c'],
+    start: '2026-10',
+    description: 'wellness technology: a multisensory, portable sanctuary for calm',
+    website: { label: 'zencube.co', href: 'https://zencube.co' },
+  },
+  {
+    title: 'Graduate Research Assistant',
     org: 'Harvard Graduate School of Education',
-    category: 'work',
-    year: 'Now',
-    date: 'Present',
-    location: 'Cambridge, MA',
-    current: true,
-    summary: 'Graduate research engineering at the Harvard Graduate School of Education.',
+    mark: 'H',
+    tint: ['#f8dfe4', '#a51c30'],
+    start: '2026-09',
+    description: 'ai & learning initiative',
   },
   {
-    id: 'human-flourishing',
-    role: 'Backend Developer',
+    title: 'Back End Developer',
     org: 'Human Flourishing Program at Harvard',
-    category: 'work',
-    year: 'Now',
-    date: 'Present',
-    location: 'Cambridge, MA',
-    current: true,
-    summary: 'Backend development for the Human Flourishing Program at Harvard.',
+    mark: 'HF',
+    tint: ['#f8dfe4', '#a51c30'],
+    start: '2026-09',
+    description: 'building a platform for schools at scale',
   },
   {
-    id: 'hgse-vc',
-    role: 'Co-President',
-    org: 'HGSE Venture Capital & Entrepreneurship Club',
-    category: 'leadership',
-    year: 'Now',
-    date: 'Present',
-    location: 'Cambridge, MA',
-    current: true,
-    stat: { value: '80+', label: 'founders and investors at our networking events' },
-    summary:
-      "Starting the school's own student venture fund, and hosting founder and investor networking events.",
+    title: 'Instructor',
+    org: 'City Tech, CUNY',
+    mark: 'CT',
+    tint: ['#e3ebfa', '#2f5b9a'],
+    type: 'Part-time',
+    start: '2025-07',
+    end: '2025-08',
+    location: 'New York · On-site',
+    description: 'ai/ml bootcamp funded by the Tsai Social Justice Fund',
   },
   {
-    id: 'icreate',
-    role: 'Organization Director',
-    org: 'iCreate (Harvard)',
-    category: 'leadership',
-    year: 'Now',
-    date: 'Present',
-    location: 'Cambridge, MA',
-    current: true,
-    summary: 'Bringing influencers, celebrities, and speakers to give talks at Harvard.',
-  },
-  {
-    id: 'gdg',
-    role: 'Head Developer',
-    org: 'Google Developer Group',
-    category: 'leadership',
-    year: '2025',
-    date: 'Sep 2025 – Present',
-    current: true,
-    stat: { value: '10+', label: 'seasons of NFL game data in the pipeline' },
-    summary:
-      'Leading a team of 5 to build an NFL outcome prediction app. Engineered data pipelines that ingest historical game stats from public APIs into BigQuery, and Python ETL scripts that clean and aggregate player and team metrics for an XGBoost classifier with real-time prediction output.',
-    stack: ['Python', 'BigQuery', 'XGBoost'],
-  },
-  {
-    id: 'lexor',
-    role: 'Data Engineering Intern',
+    title: 'Software Engineer',
     org: 'Lexor Strategies',
-    category: 'work',
-    year: '2025',
-    date: 'May 2025 – Aug 2025',
-    location: 'New York, NY',
-    stat: { value: '20+', label: 'hours of manual data work eliminated every week' },
-    summary:
-      'Built end-to-end data pipelines with Supabase and SQL to automate client reporting for real-estate and marketing teams, cutting delivery from ~2 days to same-day. Python ETL automation roughly doubled processing speed, and LLM-powered tools (Claude Cowork) took over repetitive extraction and formatting.',
-    stack: ['Supabase', 'SQL', 'Python', 'Claude'],
+    mark: 'L',
+    tint: ['#ece9e3', '#141413'],
+    type: 'Full-time',
+    start: '2025-05',
+    end: '2025-08',
+    location: 'New York · On-site',
+    description: 'leading product strategy for clients + building internal automation tools',
   },
   {
-    id: 'citytech',
-    role: 'Teaching Assistant',
-    org: 'City Tech College',
-    category: 'work',
-    year: '2025',
-    date: 'Jul 2025 – Aug 2025',
-    location: 'New York, NY',
-    stat: { value: '50+', label: 'students taught AI/ML fundamentals' },
-    summary:
-      'Taught AI/ML fundamentals in a program funded by the Tsai Social Justice Fund. Ran coding labs across 10 intensive sessions and presented student projects in NLP and computer vision to nonprofit leaders.',
-  },
-  ...hackathonEntries,
-  {
-    id: 'simply-friendly',
-    role: 'Fullstack Developer',
-    org: 'Simply Friendly, Inc.',
-    category: 'work',
-    year: '2025',
-    date: 'Jan 2025 – Apr 2025',
-    location: 'New York, NY',
-    stat: { value: '5,000+', label: 'interaction records analyzed for recommendations' },
-    summary:
-      'Improved student club recommendations on an AI-driven matchmaking platform. Shipped WebSocket chat for 100+ beta users, holding 30+ concurrent testers without downtime.',
-    stack: ['Next.js', 'React Native', 'AWS Amplify', 'WebSockets'],
-  },
-  {
-    id: 'tech-nyu',
-    role: 'Mentor',
-    org: 'Tech @ NYU',
-    category: 'leadership',
-    year: '2024',
-    date: 'Sep 2024 – May 2025',
-    location: 'New York, NY',
-    stat: { value: '~50%', label: 'rise in office-hours attendance over the year' },
-    summary:
-      'Mentored 30+ students on SWE fundamentals and Git workflows through weekly office hours, and led an intro SQL workshop for students with no prior database experience.',
-    stack: ['Git', 'SQL'],
-  },
-  {
-    id: 'passengers-united',
-    role: 'Software Engineering Intern',
+    title: 'Software Engineer',
     org: 'Passengers United',
-    category: 'work',
-    year: '2024',
-    date: 'May 2024 – Present',
-    location: 'New York, NY',
-    summary:
-      'Designing a React Native app for safer, more convenient NYC transit. Aggregates live MTA traffic and safety updates with crowd-sourced reports into a real-time delays dashboard.',
-    stack: ['React Native'],
+    mark: 'PU',
+    tint: ['#fbf0d6', '#a8771f'],
+    start: '2025-02',
+    end: '2025-05',
+    location: 'New York · Remote',
+    description: 'public transit safety app for the MTA, interviewed by journalism agencies like BBC and Columbia Journalism',
   },
   {
-    id: 'buildspace',
-    role: 'Software Developer',
-    org: 'Buildspace',
-    category: 'work',
-    year: '2024',
-    date: 'Jun 2024 – Jul 2024',
+    title: 'Mentor',
+    org: 'Tech@NYU',
+    mark: '@',
+    tint: ['#ebe5fa', '#57068c'],
+    type: 'Part-time',
+    start: '2024-09',
+    end: '2025-05',
+    location: 'New York · On-site',
+    description: 'dismantling imposter syndrome and helping my community build more',
+  },
+  {
+    title: 'Full-stack Developer',
+    org: 'Simply Friendly Inc.',
+    mark: 'SF',
+    tint: ['#fde4ef', '#b23a7a'],
+    type: 'Full-time',
+    start: '2025-01',
+    end: '2025-04',
+    location: 'New York · Remote',
+    description: 'social networking app to connect student orgs - realtime matchmaking and messaging',
+  },
+  {
+    title: 'Web Developer',
+    org: 'Aurangzeb',
+    mark: 'A',
+    tint: ['#ece9e3', '#57534e'],
+    start: '2024-09',
+    end: '2024-12',
+    location: 'New York · On-site',
+    description: 'interactive e-commerce platform (Next.js, AWS, SST, Stripe API) + React-Three-Fiber for 3D clothing models',
+  },
+  {
+    title: 'Office Assistant',
+    org: "Dunkin'",
+    mark: 'D',
+    tint: ['#fde4da', '#d4572f'],
+    start: '2021-03',
+    end: '2024-09',
+    location: 'New York',
+    description: 'reconciling sales reports of customer transactions daily on Oracle + Excel',
+  },
+  {
+    title: 'Software Developer',
+    org: 'buildspace',
+    mark: 'b',
+    tint: ['#ece9e3', '#141413'],
+    start: '2024-06',
+    end: '2024-08',
     location: 'Remote',
-    stat: { value: '85%', label: 'MNIST accuracy from a network written without frameworks' },
-    summary:
-      'Built a neural network from scratch in NumPy (no TensorFlow or PyTorch) to classify handwritten digits. Preprocessed 70,000 images with pandas, implemented ReLU and softmax, and tuned hyperparameters by hand.',
-    stack: ['NumPy', 'pandas'],
+    description: 'neural network model from scratch (just NumPy) to classify handwritten digits from the MNIST dataset, achieving 85% accuracy',
   },
   {
-    id: 'verste',
-    role: 'Web Development & Graphic Design Intern',
+    title: 'Web Design Intern',
     org: 'Verste',
-    category: 'work',
-    year: '—',
-    stat: { value: '15', label: 'research articles rewritten for a general audience' },
-    summary:
-      'Designed infographics and flyers to grow social engagement for a non-profit, and helped draft its website in HTML, CSS, and JavaScript.',
-    stack: ['HTML', 'CSS', 'JavaScript'],
+    mark: 'V',
+    tint: ['#dff2e8', '#3f8f6c'],
+    type: 'Internship',
+    start: '2022-06',
+    end: '2022-08',
+    location: 'Online · Remote',
+    description: 'non-profit platform simplifying research for high schoolers',
   },
 ];
 
-// Current roles first, then newest year first; ties keep their written order
-const yearRank = (e: Entry) => (e.current ? 9999 : Number.parseInt(e.year, 10) || 0);
-export const entries = [...allEntries].sort((a, b) => yearRank(b) - yearRank(a));
+export const leadership: Role[] = [
+  {
+    title: 'Co-President',
+    org: 'HGSE Venture Capital & Entrepreneurship Club',
+    mark: 'VC',
+    tint: ['#f8dfe4', '#a51c30'],
+    dates: 'Present',
+    description: "starting the school's own student venture fund + founder and investor events for 80+ people",
+  },
+  {
+    title: 'Organization Director',
+    org: 'iCreate (Harvard)',
+    mark: 'iC',
+    tint: ['#fde4da', '#d4572f'],
+    dates: 'Present',
+    description: 'bringing influencers, celebrities and speakers to give talks at Harvard',
+  },
+  {
+    title: 'Head Developer',
+    org: 'Google Developer Group',
+    mark: 'G',
+    tint: ['#e3ebfa', '#2f5b9a'],
+    start: '2025-09',
+    description: 'leading a team of 5 building an NFL outcome prediction app',
+  },
+];
 
 export const projects = [
   {
